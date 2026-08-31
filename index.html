@@ -1,527 +1,1137 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>StudentKit India — Free Student Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-      content="Free percentage calculator and useful tools for Indian students. Calculate marks and percentages instantly.">
+    <title>StudentKit India — Free Student Tools</title>
 
-<meta name="keywords"
-      content="percentage calculator, marks percentage calculator, student tools India, free calculator">
+    <meta name="description"
+          content="StudentKit India provides free student tools including percentage calculator, scientific calculator, word counter, exam countdown, PDF tools and image compressor.">
 
-<meta name="author" content="StudentKit India">
+    <meta name="keywords"
+          content="student tools, percentage calculator, scientific calculator, word counter, exam countdown, PDF tools, image compressor, student tools India">
 
-<!-- Google Search Console Verification -->
-<meta name="google-site-verification"
-      content="fBdInNr_pxpZjApGXBXYnxqg6Dyy9HJ7jwQC1Yva0Tw" />
+    <meta name="author" content="StudentKit India">
 
-<!-- Google AdSense -->
-<script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5067812901691828"
-    crossorigin="anonymous"></script>
+    <meta name="robots" content="index, follow">
 
-<!-- Main Stylesheet -->
-<link rel="stylesheet" href="style.css">
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification"
+          content="fBdInNr_pxpZjApGXBXYnxqg6Dyy9HJ7jwQC1Yva0Tw">
 
-</head><body><header class="header">
-    <div class="container nav">    <a href="#" class="logo">
-        <span class="logo-icon">S</span>
-        <span>StudentKit</span>
-    </a>
+    <!-- Google AdSense -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5067812901691828"
+        crossorigin="anonymous"></script>
 
-    <nav class="nav-links">
-        <a href="#tools">Tools</a>
-        <a href="#resources">Resources</a>
-        <a href="#about">About</a>
-    </nav>
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+</head>
 
-</div>
+<body>
 
-</header><main><section class="hero"><div class="container hero-content">
+<!-- ================================
+     HEADER
+================================ -->
 
-    <div class="hero-text">
+<header class="header">
 
-        <div class="badge">
-            ✨ Free tools for students
-        </div>
+    <div class="container nav">
 
-        <h1>
-            Everything students need,
-            <span>in one place.</span>
-        </h1>
-
-        <p>
-            Free, simple and fast tools for Indian students.
-            Calculate, study, plan and get things done.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#percentage" class="btn primary">
-                Calculate Percentage →
-            </a>
-
-            <a href="#tools" class="btn secondary">
-                Explore Tools
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-card">
-
-        <div class="card-top">
+        <a href="#" class="logo" aria-label="StudentKit India Home">
+            <span class="logo-icon">S</span>
             <span>StudentKit</span>
-            <span class="online">● Online</span>
-        </div>
+        </a>
 
-        <div class="calculator-preview">
+        <nav class="nav-links" aria-label="Main Navigation">
 
-            <div class="preview-label">
-                Percentage Calculator
-            </div>
+            <a href="#tools">Tools</a>
+            <a href="#resources">Resources</a>
+            <a href="#about">About</a>
 
-            <div class="fake-result">
-                <small>Example Result</small>
-                <strong>85.5%</strong>
-            </div>
+        </nav>
 
-            <a href="#percentage" class="preview-btn">
-                Open Calculator
-            </a>
-
-        </div>
+        <button
+            class="menu-btn"
+            type="button"
+            onclick="toggleMenu()"
+            aria-label="Open navigation menu">
+            ☰
+        </button>
 
     </div>
 
-</div>
+</header>
 
-</section><!-- PERCENTAGE CALCULATOR --><section class="calculator-section" id="percentage"><div class="container">
 
-    <div class="calculator-box">
+<main>
 
-        <div class="calculator-heading">
+<!-- ================================
+     HERO
+================================ -->
 
-            <span class="section-label">FREE CALCULATOR</span>
+<section class="hero">
 
-            <h2>Percentage Calculator</h2>
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                ✨ Free tools for students
+            </div>
+
+            <h1>
+                Everything students need,
+                <span>in one place.</span>
+            </h1>
 
             <p>
-                Enter your marks and total marks to calculate your percentage instantly.
+                Free, simple and fast tools for students.
+                Calculate, study, plan and get things done.
             </p>
+
+            <div class="hero-buttons">
+
+                <a href="#percentage" class="btn primary">
+                    Calculate Percentage →
+                </a>
+
+                <a href="#tools" class="btn secondary">
+                    Explore Tools
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="calculator-form">
+        <div class="hero-card">
 
-            <div class="input-group">
-                <label for="obtainedMarks">
-                    Marks Obtained
-                </label>
+            <div class="card-top">
+                <span>StudentKit</span>
+                <span class="online">● Online</span>
+            </div>
 
-                <input
-                    type="number"
-                    id="obtainedMarks"
-                    placeholder="e.g. 425"
-                    min="0"
-                >
+            <div class="calculator-preview">
+
+                <div class="preview-label">
+                    Percentage Calculator
+                </div>
+
+                <div class="fake-result">
+
+                    <small>Example Result</small>
+
+                    <strong>85.5%</strong>
+
+                </div>
+
+                <a href="#percentage" class="preview-btn">
+                    Open Calculator
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PERCENTAGE CALCULATOR
+================================ -->
+
+<section class="calculator-section" id="percentage">
+
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    FREE CALCULATOR
+                </span>
+
+                <h2>
+                    Percentage Calculator
+                </h2>
+
+                <p>
+                    Enter your marks and total marks to calculate
+                    your percentage instantly.
+                </p>
+
+            </div>
+
+
+            <div class="calculator-form">
+
+                <div class="input-group">
+
+                    <label for="obtainedMarks">
+                        Marks Obtained
+                    </label>
+
+                    <input
+                        type="number"
+                        id="obtainedMarks"
+                        placeholder="e.g. 425"
+                        min="0"
+                        step="any">
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="totalMarks">
+                        Total Marks
+                    </label>
+
+                    <input
+                        type="number"
+                        id="totalMarks"
+                        placeholder="e.g. 500"
+                        min="1"
+                        step="any">
+
+                </div>
+
+
+                <button
+                    class="calculate-btn"
+                    type="button"
+                    onclick="calculatePercentage()">
+
+                    Calculate Percentage
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="calculatorMessage"
+                class="calculator-message"
+                aria-live="polite">
+            </div>
+
+
+            <div
+                id="resultBox"
+                class="result-box">
+
+                <span>Your Percentage</span>
+
+                <strong id="percentageResult">
+                    0%
+                </strong>
+
+                <button
+                    class="copy-btn"
+                    type="button"
+                    onclick="copyPercentage()">
+
+                    📋 Copy Result
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     GOOGLE ADSENSE MULTIPLEX
+================================ -->
+
+<section class="ad-section">
+
+    <div class="container">
+
+        <div class="ad-label">
+            Advertisement
+        </div>
+
+        <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-format="autorelaxed"
+            data-ad-client="ca-pub-5067812901691828"
+            data-ad-slot="2917279669">
+        </ins>
+
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     ALL TOOLS
+================================ -->
+
+<section class="section" id="tools">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-label">
+                    TOOLS
+                </span>
+
+                <h2>
+                    Student Tools
+                </h2>
+
+                <p>
+                    Useful tools designed to save your time.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+
+            <!-- Percentage -->
+
+            <article class="tool-card active-tool">
+
+                <div class="tool-icon blue">
+                    %
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        Percentage Calculator
+                    </h3>
+
+                    <p>
+                        Calculate marks percentage instantly.
+                    </p>
+
+                    <a href="#percentage">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Scientific Calculator -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon purple">
+                    Σ
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        Scientific Calculator
+                    </h3>
+
+                    <p>
+                        Perform basic and scientific calculations.
+                    </p>
+
+                    <a href="#scientific-calculator">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Word Counter -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon green">
+                    Aa
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        Word Counter
+                    </h3>
+
+                    <p>
+                        Count words, characters and spaces.
+                    </p>
+
+                    <a href="#word-counter">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Exam Countdown -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon orange">
+                    📅
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        Exam Countdown
+                    </h3>
+
+                    <p>
+                        Set an exam date and track the remaining time.
+                    </p>
+
+                    <a href="#exam-countdown">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- PDF Tools -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon red">
+                    📄
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        PDF Tools
+                    </h3>
+
+                    <p>
+                        Print or save useful StudentKit content as PDF.
+                    </p>
+
+                    <a href="#pdf-tools">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- Image Compressor -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon cyan">
+                    🖼️
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>
+                        Image Compressor
+                    </h3>
+
+                    <p>
+                        Compress images directly in your browser.
+                    </p>
+
+                    <a href="#image-compressor">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     SCIENTIFIC CALCULATOR
+================================ -->
+
+<section class="calculator-section" id="scientific-calculator">
+
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    SCIENTIFIC CALCULATOR
+                </span>
+
+                <h2>
+                    Scientific Calculator
+                </h2>
+
+                <p>
+                    Perform common mathematical calculations quickly.
+                </p>
+
             </div>
 
 
             <div class="input-group">
-                <label for="totalMarks">
-                    Total Marks
+
+                <label for="scientificInput">
+                    Calculation
                 </label>
 
                 <input
-                    type="number"
-                    id="totalMarks"
-                    placeholder="e.g. 500"
-                    min="1"
-                >
+                    type="text"
+                    id="scientificInput"
+                    placeholder="Example: 25 × 4 + 10">
+
             </div>
 
 
             <button
                 class="calculate-btn"
-                onclick="calculatePercentage()"
-            >
-                Calculate Percentage
+                type="button"
+                onclick="calculateScientific()">
+
+                Calculate
+
             </button>
+
+
+            <div
+                id="scientificResult"
+                class="result-box">
+
+                <span>Result</span>
+
+                <strong>
+                    0
+                </strong>
+
+            </div>
 
         </div>
 
+    </div>
 
-        <div id="calculatorMessage" class="calculator-message"></div>
+</section>
 
 
-        <div id="resultBox" class="result-box">
+<!-- ================================
+     WORD COUNTER
+================================ -->
 
-            <span>Your Percentage</span>
+<section class="calculator-section" id="word-counter">
 
-            <strong id="percentageResult">
-                0%
-            </strong>
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    WORD COUNTER
+                </span>
+
+                <h2>
+                    Word & Character Counter
+                </h2>
+
+                <p>
+                    Enter or paste your text below.
+                </p>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="wordCounterInput">
+                    Your Text
+                </label>
+
+                <textarea
+                    id="wordCounterInput"
+                    rows="8"
+                    placeholder="Type or paste your text here..."
+                    oninput="updateWordCounter()">
+                </textarea>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div>📝</div>
+
+                    <h3 id="wordCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Words
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div>🔤</div>
+
+                    <h3 id="characterCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Characters
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div>↵</div>
+
+                    <h3 id="lineCount">
+                        0
+                    </h3>
+
+                    <p>
+                        Lines
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     EXAM COUNTDOWN
+================================ -->
+
+<section class="calculator-section" id="exam-countdown">
+
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    EXAM COUNTDOWN
+                </span>
+
+                <h2>
+                    Exam Countdown
+                </h2>
+
+                <p>
+                    Select your exam date to see how much time is left.
+                </p>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="examDate">
+                    Exam Date
+                </label>
+
+                <input
+                    type="date"
+                    id="examDate"
+                    onchange="startExamCountdown()">
+
+            </div>
+
+
+            <div
+                id="countdownResult"
+                class="result-box">
+
+                <span>
+                    Time Remaining
+                </span>
+
+                <strong>
+                    Select a date
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     PDF TOOLS
+================================ -->
+
+<section class="calculator-section" id="pdf-tools">
+
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    PDF TOOLS
+                </span>
+
+                <h2>
+                    PDF Utility
+                </h2>
+
+                <p>
+                    Use your browser's print function to save the
+                    current StudentKit page as a PDF.
+                </p>
+
+            </div>
+
 
             <button
-                class="copy-btn"
-                onclick="copyPercentage()"
-            >
-                📋 Copy Result
+                class="calculate-btn"
+                type="button"
+                onclick="printPageAsPDF()">
+
+                📄 Save Page as PDF
+
             </button>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
-</section><!-- GOOGLE ADSENSE MULTIPLEX AD --><section class="ad-section"><div class="container">
 
-    <div class="ad-label">
-        Advertisement
+<!-- ================================
+     IMAGE COMPRESSOR
+================================ -->
+
+<section class="calculator-section" id="image-compressor">
+
+    <div class="container">
+
+        <div class="calculator-box">
+
+            <div class="calculator-heading">
+
+                <span class="section-label">
+                    IMAGE COMPRESSOR
+                </span>
+
+                <h2>
+                    Image Compressor
+                </h2>
+
+                <p>
+                    Select an image to reduce its file size in your browser.
+                </p>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="imageInput">
+                    Select Image
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    onchange="compressImage()">
+
+            </div>
+
+
+            <div
+                id="imageCompressionResult"
+                class="result-box">
+
+                <span>
+                    Status
+                </span>
+
+                <strong>
+                    Select an image
+                </strong>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-format="autorelaxed"
-         data-ad-client="ca-pub-5067812901691828"
-         data-ad-slot="2917279669"></ins>
+</section>
 
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
-</div>
+<!-- ================================
+     RESOURCES
+================================ -->
 
-</section><!-- TOOLS --><section class="section" id="tools"><div class="container">
+<section class="resource-section" id="resources">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <div>
-            <span class="section-label">TOOLS</span>
+        <div class="section-heading centered">
 
-            <h2>Student Tools</h2>
+            <span class="section-label">
+                RESOURCES
+            </span>
+
+            <h2>
+                Study Smarter
+            </h2>
 
             <p>
-                Useful tools designed to save your time.
+                Helpful resources made for students.
             </p>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+            <a href="#about" class="resource-card">
+
+                <span>📚</span>
+
+                <div>
+
+                    <h3>
+                        Study Notes
+                    </h3>
+
+                    <p>
+                        Simple notes and explanations.
+                    </p>
+
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+
+            <a href="#tools" class="resource-card">
+
+                <span>📝</span>
+
+                <div>
+
+                    <h3>
+                        Practice Tools
+                    </h3>
+
+                    <p>
+                        Useful tools for everyday study work.
+                    </p>
+
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+
+            <a href="#exam-countdown" class="resource-card">
+
+                <span>🎯</span>
+
+                <div>
+
+                    <h3>
+                        Study Planner
+                    </h3>
+
+                    <p>
+                        Keep track of important dates.
+                    </p>
+
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     WHY STUDENTKIT
+================================ -->
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="section-label">
+                WHY STUDENTKIT?
+            </span>
+
+            <h2>
+                Made for real student needs.
+            </h2>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div>⚡</div>
+
+                <h3>
+                    Fast
+                </h3>
+
+                <p>
+                    Lightweight pages designed to load quickly.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>📱</div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Works comfortably on phones and computers.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>🆓</div>
+
+                <h3>
+                    Free
+                </h3>
+
+                <p>
+                    Useful student utilities without unnecessary complexity.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>🔒</div>
+
+                <h3>
+                    Simple
+                </h3>
+
+                <p>
+                    Easy-to-use tools designed for students.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     ABOUT
+================================ -->
+
+<section class="about-section" id="about">
+
+    <div class="container about-box">
+
+        <div>
+
+            <span class="section-label">
+                ABOUT
+            </span>
+
+            <h2>
+                Welcome to StudentKit India.
+            </h2>
+
+            <p>
+                StudentKit India is a student-focused platform designed
+                to bring useful educational resources and everyday tools
+                together in one simple place.
+            </p>
+
+        </div>
+
+
+        <div class="about-number">
+
+            <strong>
+                100%
+            </strong>
+
+            <span>
+                Student focused
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <div class="logo footer-logo">
+
+                <span class="logo-icon">
+                    S
+                </span>
+
+                <span>
+                    StudentKit
+                </span>
+
+            </div>
+
+            <p>
+                Free tools and resources for students.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="#tools">
+                Tools
+            </a>
+
+            <a href="#resources">
+                Resources
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Legal
+            </h4>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Disclaimer
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
         </div>
 
     </div>
 
 
-    <div class="tools-grid">
+    <div class="copyright">
 
-        <article class="tool-card active-tool">
-
-            <div class="tool-icon blue">
-                %
-            </div>
-
-            <div class="tool-content">
-
-                <h3>Percentage Calculator</h3>
-
-                <p>
-                    Calculate marks percentage instantly.
-                </p>
-
-                <a href="#percentage">
-                    Open Tool →
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon purple">
-                Σ
-            </div>
-
-            <div class="tool-content">
-
-                <h3>Scientific Calculator</h3>
-
-                <p>
-                    Calculate mathematical problems easily.
-                </p>
-
-                <a href="#">
-                    Coming Soon
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon green">
-                Aa
-            </div>
-
-            <div class="tool-content">
-
-                <h3>Word Counter</h3>
-
-                <p>
-                    Count words and characters instantly.
-                </p>
-
-                <a href="#">
-                    Coming Soon
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon orange">
-                📅
-            </div>
-
-            <div class="tool-content">
-
-                <h3>Exam Countdown</h3>
-
-                <p>
-                    Keep track of important exam dates.
-                </p>
-
-                <a href="#">
-                    Coming Soon
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon red">
-                📄
-            </div>
-
-            <div class="tool-content">
-
-                <h3>PDF Tools</h3>
-
-                <p>
-                    Useful PDF utilities for students.
-                </p>
-
-                <a href="#">
-                    Coming Soon
-                </a>
-
-            </div>
-
-        </article>
-
-
-        <article class="tool-card">
-
-            <div class="tool-icon cyan">
-                🖼️
-            </div>
-
-            <div class="tool-content">
-
-                <h3>Image Compressor</h3>
-
-                <p>
-                    Reduce image size for uploads.
-                </p>
-
-                <a href="#">
-                    Coming Soon
-                </a>
-
-            </div>
-
-        </article>
+        © 2026 StudentKit India. All rights reserved.
 
     </div>
 
-</div>
-
-</section><!-- RESOURCES --><section class="resource-section" id="resources"><div class="container">
-
-    <div class="section-heading centered">
-
-        <span class="section-label">RESOURCES</span>
-
-        <h2>Study Smarter</h2>
-
-        <p>
-            Helpful resources made for students.
-        </p>
-
-    </div>
+</footer>
 
 
-    <div class="resource-grid">
+<!-- Main JavaScript -->
+<script src="script.js"></script>
 
-        <a href="#" class="resource-card">
-            <span>📚</span>
-
-            <div>
-                <h3>Study Notes</h3>
-                <p>Simple notes and explanations.</p>
-            </div>
-
-            <b>→</b>
-        </a>
-
-
-        <a href="#" class="resource-card">
-            <span>📝</span>
-
-            <div>
-                <h3>Important Questions</h3>
-                <p>Practice important questions.</p>
-            </div>
-
-            <b>→</b>
-        </a>
-
-
-        <a href="#" class="resource-card">
-            <span>🎯</span>
-
-            <div>
-                <h3>Study Planner</h3>
-                <p>Plan your study sessions.</p>
-            </div>
-
-            <b>→</b>
-        </a>
-
-    </div>
-
-</div>
-
-</section><!-- WHY --><section class="why-section"><div class="container">
-
-    <div class="section-heading centered">
-
-        <span class="section-label">WHY STUDENTKIT?</span>
-
-        <h2>Made for real student needs.</h2>
-
-    </div>
-
-
-    <div class="features">
-
-        <div class="feature">
-            <div>⚡</div>
-            <h3>Fast</h3>
-            <p>Lightweight pages designed to load quickly.</p>
-        </div>
-
-        <div class="feature">
-            <div>📱</div>
-            <h3>Mobile Friendly</h3>
-            <p>Works comfortably on phones and computers.</p>
-        </div>
-
-        <div class="feature">
-            <div>🆓</div>
-            <h3>Free</h3>
-            <p>Useful student utilities without unnecessary complexity.</p>
-        </div>
-
-        <div class="feature">
-            <div>🔒</div>
-            <h3>Simple</h3>
-            <p>Easy-to-use tools designed for students.</p>
-        </div>
-
-    </div>
-
-</div>
-
-</section><!-- ABOUT --><section class="about-section" id="about"><div class="container about-box">
-
-    <div>
-
-        <span class="section-label">ABOUT</span>
-
-        <h2>Welcome to StudentKit India.</h2>
-
-        <p>
-            StudentKit India is a student-focused platform designed
-            to bring useful educational resources and everyday tools
-            together in one simple place.
-        </p>
-
-    </div>
-
-    <div class="about-number">
-        <strong>100%</strong>
-        <span>Student focused</span>
-    </div>
-
-</div>
-
-</section></main><footer class="footer"><div class="container footer-grid">
-
-    <div>
-
-        <div class="logo footer-logo">
-            <span class="logo-icon">S</span>
-            <span>StudentKit</span>
-        </div>
-
-        <p>
-            Free tools and resources for students.
-        </p>
-
-    </div>
-
-
-    <div>
-
-        <h4>Quick Links</h4>
-
-        <a href="#tools">Tools</a>
-        <a href="#resources">Resources</a>
-        <a href="#about">About</a>
-
-    </div>
-
-
-    <div>
-
-        <h4>Legal</h4>
-
-        <a href="#">Privacy Policy</a>
-        <a href="#">Disclaimer</a>
-        <a href="#">Terms</a>
-
-    </div>
-
-</div>
-
-
-<div class="copyright">
-    © 2026 StudentKit India. All rights reserved.
-</div>
-
-</footer><script src="script.js"></script></body>
+</body>
 </html>
