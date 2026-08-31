@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>StudentKit India — Free Student Tools</title>
+
+    <meta name="description"
+        content="StudentKit India provides free calculators, study tools, PDF tools and useful resources for Indian students.">
+
+    <meta name="keywords"
+        content="student tools, percentage calculator, study tools, students India, free calculator">
+
+    <meta name="author" content="StudentKit India">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container nav">
+
+        <a href="#" class="logo">
+            <span class="logo-icon">S</span>
+            <span>StudentKit</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#tools">Tools</a>
+            <a href="#resources">Resources</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <div class="badge">
+                ✨ Free tools for students
+            </div>
+
+            <h1>
+                Everything students need,
+                <span>in one place.</span>
+            </h1>
+
+            <p>
+                Free, simple and fast tools for Indian students.
+                Calculate, study, plan and get things done without complicated apps.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#tools" class="btn primary">
+                    Explore Tools →
+                </a>
+
+                <a href="#resources" class="btn secondary">
+                    Study Resources
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="card-top">
+                <span>StudentKit</span>
+                <span class="online">● Online</span>
+            </div>
+
+            <div class="calculator-preview">
+
+                <div class="preview-label">
+                    Percentage Calculator
+                </div>
+
+                <div class="fake-input">
+                    Enter your marks
+                </div>
+
+                <div class="fake-result">
+                    <small>Your Result</small>
+                    <strong>85.5%</strong>
+                </div>
+
+                <button class="preview-btn">
+                    Calculate
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+    <div class="container">
+
+        <div class="search-box">
+
+            <span>🔎</span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search student tools..."
+                oninput="searchTools()"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TOOLS ================= -->
+
+<section class="section" id="tools">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-label">TOOLS</span>
+
+                <h2>Popular Student Tools</h2>
+
+                <p>
+                    Useful tools designed to save your time.
+                </p>
+            </div>
+
+            <a href="#" class="view-all">
+                View all →
+            </a>
+
+        </div>
+
+
+        <div class="tools-grid" id="toolsGrid">
+
+
+            <!-- TOOL 1 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon blue">
+                    %
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Percentage Calculator</h3>
+
+                    <p>
+                        Calculate percentages, marks and results quickly.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TOOL 2 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon purple">
+                    Σ
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Scientific Calculator</h3>
+
+                    <p>
+                        Solve mathematical calculations easily.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TOOL 3 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon green">
+                    Aa
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Word Counter</h3>
+
+                    <p>
+                        Count words, characters and sentences instantly.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TOOL 4 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon orange">
+                    📅
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Exam Countdown</h3>
+
+                    <p>
+                        Keep track of important exam dates.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TOOL 5 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon red">
+                    📄
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>PDF Tools</h3>
+
+                    <p>
+                        Useful PDF utilities for students.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- TOOL 6 -->
+
+            <article class="tool-card">
+
+                <div class="tool-icon cyan">
+                    🖼️
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Image Compressor</h3>
+
+                    <p>
+                        Reduce image size quickly for forms and uploads.
+                    </p>
+
+                    <a href="#">
+                        Open Tool →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RESOURCE SECTION ================= -->
+
+<section class="resource-section" id="resources">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="section-label">RESOURCES</span>
+
+            <h2>Study Smarter</h2>
+
+            <p>
+                Helpful resources made for students.
+            </p>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+            <a href="#" class="resource-card">
+
+                <span>📚</span>
+
+                <div>
+                    <h3>Study Notes</h3>
+                    <p>Simple notes and explanations.</p>
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+
+            <a href="#" class="resource-card">
+
+                <span>📝</span>
+
+                <div>
+                    <h3>Important Questions</h3>
+                    <p>Practice important questions.</p>
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+
+            <a href="#" class="resource-card">
+
+                <span>🎯</span>
+
+                <div>
+                    <h3>Study Planner</h3>
+                    <p>Plan your study sessions.</p>
+                </div>
+
+                <b>→</b>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY STUDENTKIT ================= -->
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading centered">
+
+            <span class="section-label">WHY STUDENTKIT?</span>
+
+            <h2>Made for real student needs.</h2>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div>⚡</div>
+
+                <h3>Fast</h3>
+
+                <p>
+                    Lightweight pages designed to load quickly.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>📱</div>
+
+                <h3>Mobile Friendly</h3>
+
+                <p>
+                    Works comfortably on phones, tablets and computers.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>🆓</div>
+
+                <h3>Free</h3>
+
+                <p>
+                    Useful student utilities without unnecessary complexity.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div>🔒</div>
+
+                <h3>Privacy Focused</h3>
+
+                <p>
+                    We aim to keep simple tools simple and transparent.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-section" id="about">
+
+    <div class="container about-box">
+
+        <div>
+
+            <span class="section-label">ABOUT</span>
+
+            <h2>Welcome to StudentKit India.</h2>
+
+            <p>
+                StudentKit India is a student-focused platform designed
+                to bring useful educational resources and everyday tools
+                together in one simple place.
+            </p>
+
+        </div>
+
+        <div class="about-number">
+
+            <strong>100%</strong>
+
+            <span>Student focused</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+        <div>
+
+            <div class="logo footer-logo">
+                <span class="logo-icon">S</span>
+                <span>StudentKit</span>
+            </div>
+
+            <p>
+                Free tools and resources for students.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>Quick Links</h4>
+
+            <a href="#tools">Tools</a>
+            <a href="#resources">Resources</a>
+            <a href="#about">About</a>
+
+        </div>
+
+
+        <div>
+
+            <h4>Legal</h4>
+
+            <a href="#">Privacy Policy</a>
+            <a href="#">Disclaimer</a>
+            <a href="#">Terms</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 StudentKit India. All rights reserved.
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
