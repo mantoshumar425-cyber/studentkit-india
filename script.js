@@ -1,9 +1,13 @@
 function toggleMenu() {
+
     const nav = document.querySelector(".nav-links");
 
     if (nav.style.display === "flex") {
+
         nav.style.display = "";
+
     } else {
+
         nav.style.display = "flex";
         nav.style.flexDirection = "column";
         nav.style.position = "absolute";
@@ -17,24 +21,105 @@ function toggleMenu() {
 }
 
 
-function searchTools() {
+/* PERCENTAGE CALCULATOR */
 
-    const input = document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
+function calculatePercentage() {
 
-    const cards = document.querySelectorAll(".tool-card");
+    const obtained =
+        parseFloat(document.getElementById("obtainedMarks").value);
 
-    cards.forEach(card => {
+    const total =
+        parseFloat(document.getElementById("totalMarks").value);
 
-        const text = card.innerText.toLowerCase();
+    const message =
+        document.getElementById("calculatorMessage");
 
-        if (text.includes(input)) {
-            card.style.display = "flex";
-        } else {
-            card.style.display = "none";
-        }
+    const resultBox =
+        document.getElementById("resultBox");
 
+    const result =
+        document.getElementById("percentageResult");
+
+
+    message.textContent = "";
+
+    if (isNaN(obtained) || isNaN(total)) {
+
+        resultBox.style.display = "none";
+
+        message.textContent =
+            "Please enter both marks.";
+
+        return;
+    }
+
+
+    if (total <= 0) {
+
+        resultBox.style.display = "none";
+
+        message.textContent =
+            "Total marks must be greater than 0.";
+
+        return;
+    }
+
+
+    if (obtained < 0) {
+
+        resultBox.style.display = "none";
+
+        message.textContent =
+            "Marks cannot be negative.";
+
+        return;
+    }
+
+
+    if (obtained > total) {
+
+        resultBox.style.display = "none";
+
+        message.textContent =
+            "Obtained marks cannot be greater than total marks.";
+
+        return;
+    }
+
+
+    const percentage =
+        (obtained / total) * 100;
+
+
+    result.textContent =
+        percentage.toFixed(2) + "%";
+
+
+    resultBox.style.display = "block";
+
+    resultBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
     });
+}
+
+
+/* COPY RESULT */
+
+function copyPercentage() {
+
+    const result =
+        document.getElementById("percentageResult").textContent;
+
+    navigator.clipboard.writeText(result)
+        .then(() => {
+
+            alert("Percentage copied: " + result);
+
+        })
+        .catch(() => {
+
+            alert("Your percentage is " + result);
+
+        });
 }
