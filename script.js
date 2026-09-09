@@ -1,39 +1,68 @@
 /* =========================================================
-   STUDENTKIT INDIA — COMPLETE SCRIPT.JS
+   STUDENTKIT INDIA — UPGRADED SCRIPT.JS
    ========================================================= */
 
 "use strict";
+
+/* =========================================================
+   GLOBAL STATE
+   ========================================================= */
+
+let examCountdownTimer = null;
+let compressedImageURL = null;
+
+
+/* =========================================================
+   DOM READY
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    initializeTools();
+    initializeSmoothScrolling();
+    initializeNavigation();
+
+});
+
 
 /* =========================================================
    MOBILE MENU
    ========================================================= */
 
 function toggleMenu() {
+
     const navLinks = document.querySelector(".nav-links");
 
     if (!navLinks) return;
 
     navLinks.classList.toggle("show");
+
 }
 
-/* Close mobile menu after clicking a navigation link */
-document.addEventListener("DOMContentLoaded", function () {
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function initializeNavigation() {
 
     const navLinks = document.querySelectorAll(".nav-links a");
 
     navLinks.forEach(function (link) {
+
         link.addEventListener("click", function () {
+
             const menu = document.querySelector(".nav-links");
 
             if (menu) {
                 menu.classList.remove("show");
             }
+
         });
+
     });
 
-    initializeTools();
-    initializeSmoothScrolling();
-});
+}
 
 
 /* =========================================================
@@ -49,22 +78,29 @@ function initializeSmoothScrolling() {
             const targetId = this.getAttribute("href");
 
             if (!targetId || targetId === "#") {
+
                 event.preventDefault();
+
                 return;
             }
 
             const target = document.querySelector(targetId);
 
             if (target) {
+
                 event.preventDefault();
 
                 target.scrollIntoView({
                     behavior: "smooth",
                     block: "start"
                 });
+
             }
+
         });
+
     });
+
 }
 
 
@@ -74,74 +110,99 @@ function initializeSmoothScrolling() {
 
 function calculatePercentage() {
 
-    const obtainedInput = document.getElementById("obtainedMarks");
-    const totalInput = document.getElementById("totalMarks");
+    const obtainedInput =
+        document.getElementById("obtainedMarks");
 
-    const resultBox = document.getElementById("resultBox");
-    const result = document.getElementById("percentageResult");
-    const message = document.getElementById("calculatorMessage");
+    const totalInput =
+        document.getElementById("totalMarks");
 
-    if (!obtainedInput || !totalInput || !result || !resultBox) {
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const result =
+        document.getElementById("percentageResult");
+
+    if (
+        !obtainedInput ||
+        !totalInput ||
+        !result ||
+        !resultBox
+    ) {
         return;
     }
 
-    const obtained = Number(obtainedInput.value);
-    const total = Number(totalInput.value);
+    const obtainedValue =
+        obtainedInput.value.trim();
 
-    if (
-        obtainedInput.value.trim() === "" ||
-        totalInput.value.trim() === ""
-    ) {
+    const totalValue =
+        totalInput.value.trim();
+
+    if (!obtainedValue || !totalValue) {
+
         showCalculatorMessage(
             "Please enter both marks obtained and total marks.",
             "error"
         );
+
         return;
     }
 
-    if (!Number.isFinite(obtained) || !Number.isFinite(total)) {
+    const obtained = Number(obtainedValue);
+    const total = Number(totalValue);
+
+    if (
+        !Number.isFinite(obtained) ||
+        !Number.isFinite(total)
+    ) {
+
         showCalculatorMessage(
             "Please enter valid numbers.",
             "error"
         );
+
         return;
     }
 
     if (obtained < 0) {
+
         showCalculatorMessage(
             "Marks obtained cannot be negative.",
             "error"
         );
+
         return;
     }
 
     if (total <= 0) {
+
         showCalculatorMessage(
             "Total marks must be greater than 0.",
             "error"
         );
+
         return;
     }
 
     if (obtained > total) {
+
         showCalculatorMessage(
             "Marks obtained cannot be greater than total marks.",
             "error"
         );
+
         return;
     }
 
-    const percentage = (obtained / total) * 100;
+    const percentage =
+        (obtained / total) * 100;
 
-    let formattedPercentage;
+    const formattedPercentage =
+        Number.isInteger(percentage)
+            ? percentage.toString()
+            : percentage.toFixed(2);
 
-    if (Number.isInteger(percentage)) {
-        formattedPercentage = percentage.toString();
-    } else {
-        formattedPercentage = percentage.toFixed(2);
-    }
-
-    result.textContent = formattedPercentage + "%";
+    result.textContent =
+        formattedPercentage + "%";
 
     resultBox.classList.add("show");
 
@@ -149,44 +210,54 @@ function calculatePercentage() {
         "Percentage calculated successfully.",
         "success"
     );
+
 }
 
 
-/* Calculator message helper */
+/* =========================================================
+   CALCULATOR MESSAGE
+   ========================================================= */
 
 function showCalculatorMessage(text, type) {
 
-    const message = document.getElementById("calculatorMessage");
+    const message =
+        document.getElementById("calculatorMessage");
 
     if (!message) return;
 
     message.textContent = text;
 
-    message.className = "calculator-message";
+    message.className =
+        "calculator-message";
 
     if (type) {
         message.classList.add(type);
     }
+
 }
 
 
 /* =========================================================
-   COPY PERCENTAGE RESULT
+   COPY PERCENTAGE
    ========================================================= */
 
 async function copyPercentage() {
 
-    const result = document.getElementById("percentageResult");
+    const result =
+        document.getElementById("percentageResult");
 
     if (!result) return;
 
-    const text = result.textContent.trim();
+    const text =
+        result.textContent.trim();
 
     if (!text || text === "0%") {
+
         showCalculatorMessage(
             "Calculate your percentage first.",
             "error"
         );
+
         return;
     }
 
@@ -195,27 +266,29 @@ async function copyPercentage() {
         await navigator.clipboard.writeText(text);
 
         showCalculatorMessage(
-            "Percentage copied to clipboard!",
+            "Percentage copied to clipboard.",
             "success"
         );
 
     } catch (error) {
 
-        /* Fallback for older browsers */
-
-        const temporaryInput = document.createElement("input");
+        const temporaryInput =
+            document.createElement("input");
 
         temporaryInput.value = text;
 
-        document.body.appendChild(temporaryInput);
+        document.body.appendChild(
+            temporaryInput
+        );
 
         temporaryInput.select();
 
         try {
+
             document.execCommand("copy");
 
             showCalculatorMessage(
-                "Percentage copied to clipboard!",
+                "Percentage copied to clipboard.",
                 "success"
             );
 
@@ -225,20 +298,24 @@ async function copyPercentage() {
                 "Unable to copy automatically. Please copy it manually.",
                 "error"
             );
+
         }
 
         temporaryInput.remove();
+
     }
+
 }
 
 
 /* =========================================================
-   ENTER KEY SUPPORT FOR PERCENTAGE CALCULATOR
+   ENTER KEY — PERCENTAGE
    ========================================================= */
 
 document.addEventListener("keydown", function (event) {
 
-    const activeElement = document.activeElement;
+    const activeElement =
+        document.activeElement;
 
     if (
         activeElement &&
@@ -248,8 +325,13 @@ document.addEventListener("keydown", function (event) {
         ) &&
         event.key === "Enter"
     ) {
+
+        event.preventDefault();
+
         calculatePercentage();
+
     }
+
 });
 
 
@@ -259,99 +341,155 @@ document.addEventListener("keydown", function (event) {
 
 function initializeTools() {
 
-    const toolCards = document.querySelectorAll(".tool-card");
+    const toolCards =
+        document.querySelectorAll(".tool-card");
 
     toolCards.forEach(function (card) {
 
-        const titleElement = card.querySelector("h3");
-        const link = card.querySelector("a");
+        const titleElement =
+            card.querySelector("h3");
+
+        const link =
+            card.querySelector("a");
 
         if (!titleElement || !link) return;
 
-        const title = titleElement.textContent.trim();
+        const title =
+            titleElement.textContent
+                .trim()
+                .toLowerCase();
 
-        /*
-         * Remove old "Coming Soon" behaviour.
-         * Every tool gets a functional action.
-         */
+        if (title.includes("scientific calculator")) {
 
-        if (title === "Scientific Calculator") {
+            link.textContent =
+                "Open Tool";
 
-            link.textContent = "Open Tool →";
+            link.href =
+                "#scientific-calculator";
 
-            link.href = "#scientific-calculator";
+            link.addEventListener(
+                "click",
+                function (event) {
 
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                openScientificCalculator();
-            });
+                    event.preventDefault();
+
+                    openScientificCalculator();
+
+                }
+            );
+
         }
 
-        else if (title === "Word Counter") {
+        else if (title.includes("word counter")) {
 
-            link.textContent = "Open Tool →";
+            link.textContent =
+                "Open Tool";
 
-            link.href = "#word-counter";
+            link.href =
+                "#word-counter";
 
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                openWordCounter();
-            });
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openWordCounter();
+
+                }
+            );
+
         }
 
-        else if (title === "Exam Countdown") {
+        else if (title.includes("exam countdown")) {
 
-            link.textContent = "Open Tool →";
+            link.textContent =
+                "Open Tool";
 
-            link.href = "#exam-countdown";
+            link.href =
+                "#exam-countdown";
 
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                openExamCountdown();
-            });
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openExamCountdown();
+
+                }
+            );
+
         }
 
-        else if (title === "PDF Tools") {
+        else if (title.includes("pdf tools")) {
 
-            link.textContent = "Open Tool →";
+            link.textContent =
+                "Open Tool";
 
-            link.href = "#pdf-tools";
+            link.href =
+                "#pdf-tools";
 
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                openPDFTools();
-            });
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openPDFTools();
+
+                }
+            );
+
         }
 
-        else if (title === "Image Compressor") {
+        else if (title.includes("image compressor")) {
 
-            link.textContent = "Open Tool →";
+            link.textContent =
+                "Open Tool";
 
-            link.href = "#image-compressor";
+            link.href =
+                "#image-compressor";
 
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                openImageCompressor();
-            });
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    openImageCompressor();
+
+                }
+            );
+
         }
+
     });
+
 }
 
 
 /* =========================================================
-   CREATE TOOL MODAL
+   MODAL SYSTEM
    ========================================================= */
 
 function createModal(title, content) {
 
     removeExistingModal();
 
-    const overlay = document.createElement("div");
+    const overlay =
+        document.createElement("div");
 
-    overlay.className = "studentkit-modal-overlay";
+    overlay.className =
+        "studentkit-modal-overlay";
 
     overlay.innerHTML = `
-        <div class="studentkit-modal" role="dialog" aria-modal="true">
+        <div
+            class="studentkit-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="${escapeHTML(title)}"
+        >
 
             <button
                 class="studentkit-modal-close"
@@ -361,7 +499,7 @@ function createModal(title, content) {
                 ×
             </button>
 
-            <h2>${title}</h2>
+            <h2>${escapeHTML(title)}</h2>
 
             <div class="studentkit-modal-content">
                 ${content}
@@ -373,16 +511,33 @@ function createModal(title, content) {
     document.body.appendChild(overlay);
 
     const closeButton =
-        overlay.querySelector(".studentkit-modal-close");
+        overlay.querySelector(
+            ".studentkit-modal-close"
+        );
 
-    closeButton.addEventListener("click", removeExistingModal);
+    if (closeButton) {
 
-    overlay.addEventListener("click", function (event) {
+        closeButton.addEventListener(
+            "click",
+            removeExistingModal
+        );
 
-        if (event.target === overlay) {
-            removeExistingModal();
+        closeButton.focus();
+
+    }
+
+    overlay.addEventListener(
+        "click",
+        function (event) {
+
+            if (event.target === overlay) {
+
+                removeExistingModal();
+
+            }
+
         }
-    });
+    );
 
     document.addEventListener(
         "keydown",
@@ -390,30 +545,59 @@ function createModal(title, content) {
     );
 
     return overlay;
+
 }
 
 
 function handleModalEscape(event) {
 
     if (event.key === "Escape") {
+
         removeExistingModal();
+
     }
+
 }
 
 
 function removeExistingModal() {
 
     const existing =
-        document.querySelector(".studentkit-modal-overlay");
+        document.querySelector(
+            ".studentkit-modal-overlay"
+        );
 
     if (existing) {
+
         existing.remove();
+
+    }
+
+    if (examCountdownTimer) {
+
+        clearInterval(
+            examCountdownTimer
+        );
+
+        examCountdownTimer = null;
+
+    }
+
+    if (compressedImageURL) {
+
+        URL.revokeObjectURL(
+            compressedImageURL
+        );
+
+        compressedImageURL = null;
+
     }
 
     document.removeEventListener(
         "keydown",
         handleModalEscape
     );
+
 }
 
 
@@ -434,35 +618,40 @@ function openScientificCalculator() {
                 class="scientific-display"
                 placeholder="0"
                 readonly
+                aria-label="Calculator display"
             >
 
             <div class="scientific-buttons">
 
-                <button data-value="7">7</button>
-                <button data-value="8">8</button>
-                <button data-value="9">9</button>
-                <button data-value="/">÷</button>
+                <button type="button" data-value="7">7</button>
+                <button type="button" data-value="8">8</button>
+                <button type="button" data-value="9">9</button>
+                <button type="button" data-value="/">÷</button>
 
-                <button data-value="4">4</button>
-                <button data-value="5">5</button>
-                <button data-value="6">6</button>
-                <button data-value="*">×</button>
+                <button type="button" data-value="4">4</button>
+                <button type="button" data-value="5">5</button>
+                <button type="button" data-value="6">6</button>
+                <button type="button" data-value="*">×</button>
 
-                <button data-value="1">1</button>
-                <button data-value="2">2</button>
-                <button data-value="3">3</button>
-                <button data-value="-">−</button>
+                <button type="button" data-value="1">1</button>
+                <button type="button" data-value="2">2</button>
+                <button type="button" data-value="3">3</button>
+                <button type="button" data-value="-">−</button>
 
-                <button data-value="0">0</button>
-                <button data-value=".">.</button>
-                <button data-action="clear">C</button>
-                <button data-value="+">+</button>
+                <button type="button" data-value="0">0</button>
+                <button type="button" data-value=".">.</button>
+                <button type="button" data-action="clear">C</button>
+                <button type="button" data-value="+">+</button>
 
-                <button data-value="(">(</button>
-                <button data-value=")">)</button>
-                <button data-value="%">%</button>
-                <button data-action="calculate">=</button>
+                <button type="button" data-value="(">(</button>
+                <button type="button" data-value=")">)</button>
+                <button type="button" data-value="%">%</button>
+                <button type="button" data-action="calculate">=</button>
 
+            </div>
+
+            <div class="calculator-hint">
+                Supports basic arithmetic, brackets and percentages.
             </div>
 
         </div>
@@ -470,96 +659,193 @@ function openScientificCalculator() {
     );
 
     const display =
-        modal.querySelector("#scientificDisplay");
+        modal.querySelector(
+            "#scientificDisplay"
+        );
 
     const buttons =
-        modal.querySelectorAll(".scientific-buttons button");
+        modal.querySelectorAll(
+            ".scientific-buttons button"
+        );
 
     buttons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+        button.addEventListener(
+            "click",
+            function () {
 
-            const value = this.dataset.value;
-            const action = this.dataset.action;
+                const value =
+                    this.dataset.value;
 
-            if (action === "clear") {
-                display.value = "";
-                return;
+                const action =
+                    this.dataset.action;
+
+                if (action === "clear") {
+
+                    display.value = "";
+
+                    return;
+                }
+
+                if (action === "calculate") {
+
+                    calculateScientificExpression(
+                        display
+                    );
+
+                    return;
+                }
+
+                if (value) {
+
+                    display.value += value;
+
+                }
+
             }
+        );
 
-            if (action === "calculate") {
-                calculateScientificExpression(display);
-                return;
-            }
-
-            if (value) {
-                display.value += value;
-            }
-        });
     });
+
+    document.addEventListener(
+        "keydown",
+        handleCalculatorKeyboard
+    );
+
+}
+
+
+function handleCalculatorKeyboard(event) {
+
+    const display =
+        document.getElementById(
+            "scientificDisplay"
+        );
+
+    if (!display) return;
+
+    const allowed =
+        "0123456789+-*/().%";
+
+    if (
+        allowed.includes(event.key)
+    ) {
+
+        display.value += event.key;
+
+        event.preventDefault();
+
+    }
+
+    else if (
+        event.key === "Enter"
+    ) {
+
+        calculateScientificExpression(
+            display
+        );
+
+        event.preventDefault();
+
+    }
+
+    else if (
+        event.key === "Backspace"
+    ) {
+
+        display.value =
+            display.value.slice(0, -1);
+
+        event.preventDefault();
+
+    }
+
 }
 
 
 function calculateScientificExpression(display) {
 
-    let expression = display.value.trim();
+    let expression =
+        display.value.trim();
 
-    if (!expression) {
-        return;
-    }
+    if (!expression) return;
 
-    /*
-     * Basic safe calculator parser.
-     * Only mathematical characters are allowed.
-     */
+    if (
+        !/^[0-9+\-*/().%\s]+$/.test(
+            expression
+        )
+    ) {
 
-    if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
-
-        display.value = "Invalid";
-
-        setTimeout(function () {
-            display.value = "";
-        }, 900);
+        showCalculatorError(
+            display,
+            "Invalid"
+        );
 
         return;
     }
 
     try {
 
-        expression = expression.replace(
-            /(\d+(?:\.\d+)?)%/g,
-            "($1/100)"
-        );
+        expression =
+            expression.replace(
+                /(\d+(?:\.\d+)?)%/g,
+                "($1/100)"
+            );
 
-        /*
-         * Function constructor is used only after
-         * strict character validation above.
-         */
-
-        const result = Function(
-            '"use strict"; return (' + expression + ')'
-        )();
+        const result =
+            Function(
+                '"use strict"; return (' +
+                expression +
+                ')'
+            )();
 
         if (
             typeof result !== "number" ||
             !Number.isFinite(result)
         ) {
-            throw new Error("Invalid result");
+
+            throw new Error(
+                "Invalid result"
+            );
+
         }
 
         display.value =
             Number.isInteger(result)
-                ? result
-                : Number(result.toFixed(10));
+                ? String(result)
+                : String(
+                    Number(
+                        result.toFixed(10)
+                    )
+                );
 
     } catch (error) {
 
-        display.value = "Error";
+        showCalculatorError(
+            display,
+            "Error"
+        );
 
-        setTimeout(function () {
-            display.value = "";
-        }, 900);
     }
+
+}
+
+
+function showCalculatorError(
+    display,
+    message
+) {
+
+    display.value = message;
+
+    setTimeout(function () {
+
+        if (display) {
+            display.value = "";
+        }
+
+    }, 900);
+
 }
 
 
@@ -574,8 +860,9 @@ function openWordCounter() {
         `
         <textarea
             id="wordCounterInput"
-            rows="8"
+            rows="9"
             placeholder="Type or paste your text here..."
+            aria-label="Text for word counter"
         ></textarea>
 
         <div class="word-counter-results">
@@ -596,70 +883,191 @@ function openWordCounter() {
             </div>
 
             <div>
+                <strong id="sentenceCount">0</strong>
+                <span>Sentences</span>
+            </div>
+
+            <div>
                 <strong id="lineCount">0</strong>
                 <span>Lines</span>
             </div>
+
+            <div>
+                <strong id="readingTime">0 min</strong>
+                <span>Reading Time</span>
+            </div>
+
+        </div>
+
+        <div class="word-counter-actions">
+
+            <button
+                type="button"
+                id="copyTextButton"
+            >
+                Copy Text
+            </button>
+
+            <button
+                type="button"
+                id="clearTextButton"
+            >
+                Clear
+            </button>
 
         </div>
         `
     );
 
     const textarea =
-        modal.querySelector("#wordCounterInput");
+        modal.querySelector(
+            "#wordCounterInput"
+        );
 
-    textarea.addEventListener("input", updateWordCounter);
+    textarea.addEventListener(
+        "input",
+        updateWordCounter
+    );
+
+    const copyButton =
+        modal.querySelector(
+            "#copyTextButton"
+        );
+
+    const clearButton =
+        modal.querySelector(
+            "#clearTextButton"
+        );
+
+    copyButton.addEventListener(
+        "click",
+        async function () {
+
+            if (!textarea.value) return;
+
+            try {
+
+                await navigator.clipboard.writeText(
+                    textarea.value
+                );
+
+                copyButton.textContent =
+                    "Copied";
+
+                setTimeout(function () {
+
+                    copyButton.textContent =
+                        "Copy Text";
+
+                }, 1200);
+
+            } catch (error) {
+
+                textarea.select();
+
+                document.execCommand(
+                    "copy"
+                );
+
+            }
+
+        }
+    );
+
+    clearButton.addEventListener(
+        "click",
+        function () {
+
+            textarea.value = "";
+
+            updateWordCounter();
+
+            textarea.focus();
+
+        }
+    );
 
     textarea.focus();
+
 }
 
 
 function updateWordCounter() {
 
     const textarea =
-        document.getElementById("wordCounterInput");
+        document.getElementById(
+            "wordCounterInput"
+        );
 
     if (!textarea) return;
 
-    const text = textarea.value;
+    const text =
+        textarea.value;
+
+    const trimmed =
+        text.trim();
 
     const words =
-        text.trim() === ""
+        trimmed === ""
             ? []
-            : text.trim().split(/\s+/);
+            : trimmed.split(/\s+/);
+
+    const sentences =
+        trimmed === ""
+            ? []
+            : trimmed
+                .split(/[.!?]+/)
+                .filter(
+                    function (item) {
+                        return item.trim() !== "";
+                    }
+                );
 
     const lines =
         text === ""
             ? 0
             : text.split(/\r?\n/).length;
 
-    const wordCount =
-        document.getElementById("wordCount");
+    const readingMinutes =
+        words.length === 0
+            ? 0
+            : Math.max(
+                1,
+                Math.ceil(
+                    words.length / 200
+                )
+            );
 
-    const characterCount =
-        document.getElementById("characterCount");
+    setText(
+        "wordCount",
+        words.length
+    );
 
-    const noSpaceCount =
-        document.getElementById("characterNoSpaceCount");
+    setText(
+        "characterCount",
+        text.length
+    );
 
-    const lineCount =
-        document.getElementById("lineCount");
+    setText(
+        "characterNoSpaceCount",
+        text.replace(/\s/g, "").length
+    );
 
-    if (wordCount) {
-        wordCount.textContent = words.length;
-    }
+    setText(
+        "sentenceCount",
+        sentences.length
+    );
 
-    if (characterCount) {
-        characterCount.textContent = text.length;
-    }
+    setText(
+        "lineCount",
+        lines
+    );
 
-    if (noSpaceCount) {
-        noSpaceCount.textContent =
-            text.replace(/\s/g, "").length;
-    }
+    setText(
+        "readingTime",
+        readingMinutes + " min"
+    );
 
-    if (lineCount) {
-        lineCount.textContent = lines;
-    }
 }
 
 
@@ -677,87 +1085,140 @@ function openExamCountdown() {
         <input
             type="date"
             id="examDateInput"
+            aria-label="Exam date"
         >
 
         <div
             id="countdownResult"
             class="countdown-result"
         >
-            Select a date to start the countdown.
+            Select a future date to start the countdown.
         </div>
+
+        <button
+            type="button"
+            id="clearExamDate"
+        >
+            Clear Date
+        </button>
         `
     );
 
     const dateInput =
-        modal.querySelector("#examDateInput");
+        modal.querySelector(
+            "#examDateInput"
+        );
+
+    const clearButton =
+        modal.querySelector(
+            "#clearExamDate"
+        );
+
+    dateInput.min =
+        getTodayDate();
 
     dateInput.addEventListener(
         "change",
         updateExamCountdown
     );
+
+    clearButton.addEventListener(
+        "click",
+        function () {
+
+            dateInput.value = "";
+
+            const result =
+                modal.querySelector(
+                    "#countdownResult"
+                );
+
+            result.textContent =
+                "Select a future date to start the countdown.";
+
+        }
+    );
+
 }
-
-
-let examCountdownTimer = null;
 
 
 function updateExamCountdown() {
 
     const input =
-        document.getElementById("examDateInput");
+        document.getElementById(
+            "examDateInput"
+        );
 
     const result =
-        document.getElementById("countdownResult");
+        document.getElementById(
+            "countdownResult"
+        );
 
     if (!input || !result) return;
 
-    if (!input.value) {
-        return;
-    }
+    if (!input.value) return;
 
     if (examCountdownTimer) {
-        clearInterval(examCountdownTimer);
+
+        clearInterval(
+            examCountdownTimer
+        );
+
     }
 
     function update() {
 
         const target =
-            new Date(input.value + "T00:00:00");
+            new Date(
+                input.value +
+                "T00:00:00"
+            );
 
-        const now = new Date();
+        const now =
+            new Date();
 
         const difference =
-            target.getTime() - now.getTime();
+            target.getTime() -
+            now.getTime();
 
         if (difference <= 0) {
 
             result.textContent =
-                "Your exam date has arrived! 🎯";
+                "The selected exam date has arrived.";
 
-            clearInterval(examCountdownTimer);
+            clearInterval(
+                examCountdownTimer
+            );
+
+            examCountdownTimer = null;
 
             return;
         }
 
+        const totalSeconds =
+            Math.floor(
+                difference / 1000
+            );
+
         const days =
             Math.floor(
-                difference / (1000 * 60 * 60 * 24)
+                totalSeconds / 86400
             );
 
         const hours =
             Math.floor(
-                (difference / (1000 * 60 * 60)) % 24
+                (totalSeconds % 86400) /
+                3600
             );
 
         const minutes =
             Math.floor(
-                (difference / (1000 * 60)) % 60
+                (totalSeconds % 3600) /
+                60
             );
 
         const seconds =
-            Math.floor(
-                (difference / 1000) % 60
-            );
+            totalSeconds % 60;
 
         result.innerHTML = `
             <strong>${days}</strong> days
@@ -766,12 +1227,17 @@ function updateExamCountdown() {
             <strong>${seconds}</strong> seconds
             remaining
         `;
+
     }
 
     update();
 
     examCountdownTimer =
-        setInterval(update, 1000);
+        setInterval(
+            update,
+            1000
+        );
+
 }
 
 
@@ -785,13 +1251,14 @@ function openPDFTools() {
         "PDF Tools",
         `
         <p>
-            Select a PDF file to view basic file information.
+            Select a PDF to view its basic information
+            and open it in a new browser tab.
         </p>
 
         <input
             type="file"
             id="pdfInput"
-            accept="application/pdf"
+            accept="application/pdf,.pdf"
         >
 
         <div
@@ -800,33 +1267,192 @@ function openPDFTools() {
         >
             No PDF selected.
         </div>
+
+        <div
+            id="pdfActions"
+            class="tool-actions"
+            style="display:none;"
+        >
+
+            <button
+                type="button"
+                id="openPDFButton"
+            >
+                Open PDF
+            </button>
+
+            <button
+                type="button"
+                id="downloadPDFButton"
+            >
+                Download PDF
+            </button>
+
+        </div>
+
+        <iframe
+            id="pdfPreview"
+            title="PDF Preview"
+            style="
+                display:none;
+                width:100%;
+                height:500px;
+                border:1px solid #ddd;
+                border-radius:10px;
+                margin-top:16px;
+            "
+        ></iframe>
         `
     );
 
     const input =
-        modal.querySelector("#pdfInput");
+        modal.querySelector(
+            "#pdfInput"
+        );
 
-    input.addEventListener("change", function () {
+    const info =
+        modal.querySelector(
+            "#pdfInfo"
+        );
 
-        const file = this.files[0];
+    const actions =
+        modal.querySelector(
+            "#pdfActions"
+        );
 
-        const info =
-            modal.querySelector("#pdfInfo");
+    const preview =
+        modal.querySelector(
+            "#pdfPreview"
+        );
 
-        if (!file) {
-            info.textContent = "No PDF selected.";
-            return;
+    let pdfURL = null;
+
+    input.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            if (!file) {
+
+                info.textContent =
+                    "No PDF selected.";
+
+                actions.style.display =
+                    "none";
+
+                preview.style.display =
+                    "none";
+
+                return;
+            }
+
+            if (
+                file.type !==
+                "application/pdf" &&
+                !file.name
+                    .toLowerCase()
+                    .endsWith(".pdf")
+            ) {
+
+                info.textContent =
+                    "Please select a valid PDF file.";
+
+                actions.style.display =
+                    "none";
+
+                return;
+            }
+
+            if (pdfURL) {
+
+                URL.revokeObjectURL(
+                    pdfURL
+                );
+
+            }
+
+            pdfURL =
+                URL.createObjectURL(
+                    file
+                );
+
+            info.innerHTML = `
+                <strong>File:</strong>
+                ${escapeHTML(file.name)}
+                <br>
+                <strong>Size:</strong>
+                ${formatFileSize(file.size)}
+                <br>
+                <strong>Type:</strong>
+                PDF
+            `;
+
+            actions.style.display =
+                "flex";
+
+            preview.src =
+                pdfURL;
+
+            preview.style.display =
+                "block";
+
         }
+    );
 
-        const size =
-            formatFileSize(file.size);
+    modal.querySelector(
+        "#openPDFButton"
+    ).addEventListener(
+        "click",
+        function () {
 
-        info.innerHTML = `
-            <strong>File:</strong> ${escapeHTML(file.name)}<br>
-            <strong>Size:</strong> ${size}<br>
-            <strong>Type:</strong> PDF
-        `;
-    });
+            if (pdfURL) {
+
+                window.open(
+                    pdfURL,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+            }
+
+        }
+    );
+
+    modal.querySelector(
+        "#downloadPDFButton"
+    ).addEventListener(
+        "click",
+        function () {
+
+            if (!pdfURL) return;
+
+            const file =
+                input.files[0];
+
+            const link =
+                document.createElement("a");
+
+            link.href =
+                pdfURL;
+
+            link.download =
+                file
+                    ? file.name
+                    : "studentkit-document.pdf";
+
+            document.body.appendChild(
+                link
+            );
+
+            link.click();
+
+            link.remove();
+
+        }
+    );
+
 }
 
 
@@ -840,7 +1466,8 @@ function openImageCompressor() {
         "Image Compressor",
         `
         <p>
-            Choose an image and select the quality level.
+            Choose an image, select quality and compress it
+            directly in your browser.
         </p>
 
         <input
@@ -883,54 +1510,98 @@ function openImageCompressor() {
         >
             Download Compressed Image
         </a>
+
+        <img
+            id="compressedPreview"
+            alt="Compressed image preview"
+            style="
+                display:none;
+                max-width:100%;
+                margin-top:16px;
+                border-radius:10px;
+            "
+        >
         `
     );
 
     const input =
-        modal.querySelector("#imageInput");
+        modal.querySelector(
+            "#imageInput"
+        );
 
     const quality =
-        modal.querySelector("#imageQuality");
+        modal.querySelector(
+            "#imageQuality"
+        );
 
     const qualityValue =
-        modal.querySelector("#qualityValue");
+        modal.querySelector(
+            "#qualityValue"
+        );
 
     const compressButton =
-        modal.querySelector("#compressImageButton");
+        modal.querySelector(
+            "#compressImageButton"
+        );
 
-    quality.addEventListener("input", function () {
+    quality.addEventListener(
+        "input",
+        function () {
 
-        qualityValue.textContent =
-            this.value + "%";
-    });
+            qualityValue.textContent =
+                this.value + "%";
 
-    input.addEventListener("change", function () {
-
-        const file = this.files[0];
-
-        const info =
-            modal.querySelector("#imageInfo");
-
-        if (!file) {
-            info.textContent = "No image selected.";
-            return;
         }
+    );
 
-        info.innerHTML = `
-            <strong>File:</strong> ${escapeHTML(file.name)}<br>
-            <strong>Original size:</strong>
-            ${formatFileSize(file.size)}
-        `;
-    });
+    input.addEventListener(
+        "change",
+        function () {
+
+            const file =
+                this.files[0];
+
+            const info =
+                modal.querySelector(
+                    "#imageInfo"
+                );
+
+            if (!file) {
+
+                info.textContent =
+                    "No image selected.";
+
+                return;
+            }
+
+            info.innerHTML = `
+                <strong>File:</strong>
+                ${escapeHTML(file.name)}
+                <br>
+                <strong>Original size:</strong>
+                ${formatFileSize(file.size)}
+                <br>
+                <strong>Type:</strong>
+                ${escapeHTML(file.type || "Image")}
+            `;
+
+        }
+    );
 
     compressButton.addEventListener(
         "click",
         function () {
 
-            const file = input.files[0];
+            const file =
+                input.files[0];
 
             if (!file) {
-                alert("Please select an image first.");
+
+                showToolMessage(
+                    modal,
+                    "Please select an image first."
+                );
+
                 return;
             }
 
@@ -939,121 +1610,305 @@ function openImageCompressor() {
                 Number(quality.value),
                 modal
             );
+
         }
     );
+
 }
 
 
-function compressImage(file, quality, modal) {
+function compressImage(
+    file,
+    quality,
+    modal
+) {
 
-    const reader = new FileReader();
+    const reader =
+        new FileReader();
 
-    reader.onload = function (event) {
+    reader.onerror =
+        function () {
 
-        const image = new Image();
-
-        image.onload = function () {
-
-            const canvas =
-                document.createElement("canvas");
-
-            const maxWidth = 1600;
-            const maxHeight = 1600;
-
-            let width = image.width;
-            let height = image.height;
-
-            if (width > maxWidth) {
-
-                height =
-                    Math.round(
-                        height * (maxWidth / width)
-                    );
-
-                width = maxWidth;
-            }
-
-            if (height > maxHeight) {
-
-                width =
-                    Math.round(
-                        width * (maxHeight / height)
-                    );
-
-                height = maxHeight;
-            }
-
-            canvas.width = width;
-            canvas.height = height;
-
-            const context =
-                canvas.getContext("2d");
-
-            context.drawImage(
-                image,
-                0,
-                0,
-                width,
-                height
+            showToolMessage(
+                modal,
+                "Unable to read this image."
             );
 
-            canvas.toBlob(
-                function (blob) {
+        };
 
-                    if (!blob) {
-                        alert(
-                            "Compression failed. Please try another image."
+    reader.onload =
+        function (event) {
+
+            const image =
+                new Image();
+
+            image.onerror =
+                function () {
+
+                    showToolMessage(
+                        modal,
+                        "The selected image could not be processed."
+                    );
+
+                };
+
+            image.onload =
+                function () {
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
                         );
+
+                    const maxWidth = 1600;
+                    const maxHeight = 1600;
+
+                    let width =
+                        image.naturalWidth;
+
+                    let height =
+                        image.naturalHeight;
+
+                    if (
+                        width > maxWidth
+                    ) {
+
+                        height =
+                            Math.round(
+                                height *
+                                (
+                                    maxWidth /
+                                    width
+                                )
+                            );
+
+                        width =
+                            maxWidth;
+
+                    }
+
+                    if (
+                        height > maxHeight
+                    ) {
+
+                        width =
+                            Math.round(
+                                width *
+                                (
+                                    maxHeight /
+                                    height
+                                )
+                            );
+
+                        height =
+                            maxHeight;
+
+                    }
+
+                    canvas.width =
+                        width;
+
+                    canvas.height =
+                        height;
+
+                    const context =
+                        canvas.getContext(
+                            "2d"
+                        );
+
+                    if (!context) {
+
+                        showToolMessage(
+                            modal,
+                            "Your browser could not create the image canvas."
+                        );
+
                         return;
                     }
 
-                    const url =
-                        URL.createObjectURL(blob);
+                    context.fillStyle =
+                        "#ffffff";
 
-                    const download =
-                        modal.querySelector(
-                            "#compressedDownload"
-                        );
+                    context.fillRect(
+                        0,
+                        0,
+                        width,
+                        height
+                    );
 
-                    const info =
-                        modal.querySelector(
-                            "#imageInfo"
-                        );
+                    context.drawImage(
+                        image,
+                        0,
+                        0,
+                        width,
+                        height
+                    );
 
-                    download.href = url;
+                    canvas.toBlob(
+                        function (blob) {
 
-                    download.style.display =
-                        "inline-block";
+                            if (!blob) {
 
-                    download.textContent =
-                        "⬇ Download Compressed Image";
+                                showToolMessage(
+                                    modal,
+                                    "Compression failed. Please try another image."
+                                );
 
-                    info.innerHTML += `
-                        <br>
-                        <strong>Compressed size:</strong>
-                        ${formatFileSize(blob.size)}
-                    `;
-                },
-                "image/jpeg",
-                quality / 100
-            );
+                                return;
+                            }
+
+                            if (
+                                compressedImageURL
+                            ) {
+
+                                URL.revokeObjectURL(
+                                    compressedImageURL
+                                );
+
+                            }
+
+                            compressedImageURL =
+                                URL.createObjectURL(
+                                    blob
+                                );
+
+                            const download =
+                                modal.querySelector(
+                                    "#compressedDownload"
+                                );
+
+                            const info =
+                                modal.querySelector(
+                                    "#imageInfo"
+                                );
+
+                            const preview =
+                                modal.querySelector(
+                                    "#compressedPreview"
+                                );
+
+                            download.href =
+                                compressedImageURL;
+
+                            download.download =
+                                "studentkit-compressed.jpg";
+
+                            download.style.display =
+                                "inline-block";
+
+                            download.textContent =
+                                "Download Compressed Image";
+
+                            preview.src =
+                                compressedImageURL;
+
+                            preview.style.display =
+                                "block";
+
+                            const originalSize =
+                                file.size;
+
+                            const compressedSize =
+                                blob.size;
+
+                            const savedBytes =
+                                Math.max(
+                                    0,
+                                    originalSize -
+                                    compressedSize
+                                );
+
+                            const savedPercent =
+                                originalSize > 0
+                                    ? (
+                                        savedBytes /
+                                        originalSize
+                                    ) * 100
+                                    : 0;
+
+                            info.innerHTML = `
+                                <strong>File:</strong>
+                                ${escapeHTML(file.name)}
+                                <br>
+                                <strong>Original size:</strong>
+                                ${formatFileSize(originalSize)}
+                                <br>
+                                <strong>Compressed size:</strong>
+                                ${formatFileSize(compressedSize)}
+                                <br>
+                                <strong>Saved:</strong>
+                                ${savedPercent.toFixed(1)}%
+                                (${formatFileSize(savedBytes)})
+                                <br>
+                                <strong>Dimensions:</strong>
+                                ${width} × ${height}
+                            `;
+
+                        },
+                        "image/jpeg",
+                        Math.min(
+                            1,
+                            Math.max(
+                                0.1,
+                                quality / 100
+                            )
+                        )
+                    );
+
+                };
+
+            image.src =
+                event.target.result;
+
         };
 
-        image.src = event.target.result;
-    };
+    reader.readAsDataURL(
+        file
+    );
 
-    reader.readAsDataURL(file);
 }
 
 
 /* =========================================================
-   UTILITY FUNCTIONS
+   GENERIC TOOL MESSAGE
+   ========================================================= */
+
+function showToolMessage(
+    modal,
+    message
+) {
+
+    const info =
+        modal.querySelector(
+            ".tool-result"
+        );
+
+    if (!info) {
+
+        alert(message);
+
+        return;
+    }
+
+    info.textContent =
+        message;
+
+}
+
+
+/* =========================================================
+   FILE SIZE
    ========================================================= */
 
 function formatFileSize(bytes) {
 
-    if (bytes === 0) {
+    if (
+        !Number.isFinite(bytes) ||
+        bytes <= 0
+    ) {
+
         return "0 Bytes";
+
     }
 
     const units = [
@@ -1064,28 +1919,121 @@ function formatFileSize(bytes) {
     ];
 
     const index =
-        Math.floor(
-            Math.log(bytes) / Math.log(1024)
+        Math.min(
+            Math.floor(
+                Math.log(bytes) /
+                Math.log(1024)
+            ),
+            units.length - 1
         );
 
     return (
         parseFloat(
-            (bytes / Math.pow(1024, index)).toFixed(2)
+            (
+                bytes /
+                Math.pow(
+                    1024,
+                    index
+                )
+            ).toFixed(2)
         )
-        + " "
-        + units[index]
+        +
+        " " +
+        units[index]
     );
+
 }
 
+
+/* =========================================================
+   SAFE HTML
+   ========================================================= */
 
 function escapeHTML(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   SET TEXT HELPER
+   ========================================================= */
+
+function setText(
+    id,
+    value
+) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* =========================================================
+   TODAY DATE
+   ========================================================= */
+
+function getTodayDate() {
+
+    const date =
+        new Date();
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
 }
 
 
@@ -1093,33 +2041,52 @@ function escapeHTML(value) {
    GLOBAL ERROR PROTECTION
    ========================================================= */
 
-window.addEventListener("error", function (event) {
+window.addEventListener(
+    "error",
+    function (event) {
 
-    console.warn(
-        "StudentKit error:",
-        event.message
-    );
-});
+        console.warn(
+            "StudentKit error:",
+            event.message
+        );
+
+    }
+);
 
 
 /* =========================================================
-   EXPORT FUNCTIONS FOR HTML onclick ATTRIBUTES
+   EXPORT FUNCTIONS
    ========================================================= */
 
-window.toggleMenu = toggleMenu;
-window.calculatePercentage = calculatePercentage;
-window.copyPercentage = copyPercentage;
-window.openScientificCalculator = openScientificCalculator;
-window.openWordCounter = openWordCounter;
-window.openExamCountdown = openExamCountdown;
-window.openPDFTools = openPDFTools;
-window.openImageCompressor = openImageCompressor;
+window.toggleMenu =
+    toggleMenu;
+
+window.calculatePercentage =
+    calculatePercentage;
+
+window.copyPercentage =
+    copyPercentage;
+
+window.openScientificCalculator =
+    openScientificCalculator;
+
+window.openWordCounter =
+    openWordCounter;
+
+window.openExamCountdown =
+    openExamCountdown;
+
+window.openPDFTools =
+    openPDFTools;
+
+window.openImageCompressor =
+    openImageCompressor;
 
 
 /* =========================================================
-   STUDENTKIT INITIALIZED
+   INITIALIZED
    ========================================================= */
 
 console.log(
-    "StudentKit India — All tools initialized successfully."
+    "StudentKit India — upgraded tools initialized successfully."
 );
