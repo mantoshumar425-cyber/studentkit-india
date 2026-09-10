@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 10 Exam Preparation Guide | StudentKit India</title>
+
+  <meta
+    name="description"
+    content="A practical Class 10 exam preparation guide covering planning, revision, question practice, subject preparation, mistake tracking and exam-day preparation."
+  >
+
+  <meta
+    name="keywords"
+    content="Class 10 exam preparation, Class 10 study strategy, board exam preparation, Class 10 revision plan, exam preparation guide"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://studentkit-india.vercel.app/exam-preparation.html"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #15171c;
+      --muted: #626875;
+      --border: #e4e7ec;
+      --soft: #f0f2f5;
+      --primary: #111827;
+      --accent: #2563eb;
+      --success: #15803d;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 65px 0 45px;
+      background: linear-gradient(180deg, #fff, var(--bg));
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    main {
+      padding: 40px 0 75px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: var(--muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 55px 1fr;
+      gap: 18px;
+    }
+
+    .step-number {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .subject {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 24px;
+    }
+
+    .subject h3 {
+      font-size: 21px;
+      margin-bottom: 9px;
+    }
+
+    .subject p {
+      color: var(--muted);
+      margin-bottom: 13px;
+    }
+
+    .subject ul {
+      padding-left: 20px;
+      color: #505762;
+    }
+
+    .subject li {
+      margin-bottom: 6px;
+    }
+
+    .revision-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .revision-box h3 {
+      font-size: 21px;
+      margin: 20px 0 7px;
+    }
+
+    .revision-box h3:first-child {
+      margin-top: 0;
+    }
+
+    .revision-box p {
+      color: #555b66;
+    }
+
+    .mistake-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .mistake-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .mistake-card h3 {
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+
+    .mistake-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .checklist {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 27px;
+    }
+
+    .checklist-item {
+      display: flex;
+      gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .checklist-item:last-child {
+      border-bottom: 0;
+    }
+
+    .check {
+      width: 21px;
+      height: 21px;
+      border: 2px solid #9ca3af;
+      border-radius: 5px;
+      flex: 0 0 auto;
+      margin-top: 3px;
+    }
+
+    .checklist-item p {
+      color: #555b66;
+    }
+
+    .faq {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 21px;
+      margin-bottom: 11px;
+    }
+
+    .faq h3 {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .faq p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      background: var(--primary);
+      color: #fff;
+      padding: 35px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: #d1d5db;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      background: #fff;
+      color: #111827;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #6b7280;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 14px;
+    }
+
+    footer a {
+      margin: 0 8px;
+    }
+
+    @media (max-width: 750px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .subject-grid,
+      .mistake-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 0 35px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+      }
+
+      .section h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      StudentKit India
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="study-notes.html">Study Notes</a>
+      <a href="study-planner.html">Study Planner</a>
+      <a href="exam-preparation.html">Exam Preparation</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      Home / Exam Preparation
+    </div>
+
+    <h1>
+      Class 10 Exam Preparation Guide
+    </h1>
+
+    <p>
+      A practical guide to preparing for examinations with better
+      planning, concept revision, written practice, mistake analysis
+      and regular self-testing.
+    </p>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <div class="container">
+
+
+    <section class="section">
+
+      <h2>
+        A Better Way to Prepare for Exams
+      </h2>
+
+      <p class="intro">
+        Effective preparation is not only about studying for longer
+        hours. A useful preparation system combines understanding,
+        practice, revision and checking your own mistakes. Your
+        school and examination board should remain the final source
+        for the current syllabus, examination pattern and official
+        instructions.
+      </p>
+
+      <div class="steps">
+
+
+        <article class="step">
+
+          <div class="step-number">1</div>
+
+          <div>
+
+            <h3>Understand the syllabus</h3>
+
+            <p>
+              Make a list of the chapters and topics you need to
+              complete. Mark topics as completed only after you have
+              understood the concept and attempted relevant questions.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">2</div>
+
+          <div>
+
+            <h3>Divide the workload</h3>
+
+            <p>
+              Break a large syllabus into smaller study targets.
+              Planning one chapter or topic at a time makes progress
+              easier to measure and reduces last-minute pressure.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">3</div>
+
+          <div>
+
+            <h3>Study the concept</h3>
+
+            <p>
+              Read your textbook or trusted class material carefully.
+              Try to explain the concept in your own words before
+              moving to memorisation.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">4</div>
+
+          <div>
+
+            <h3>Practise questions</h3>
+
+            <p>
+              Solve questions after studying each topic. For numerical
+              subjects, written practice is especially important because
+              knowing a formula does not automatically mean you can
+              apply it correctly.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">5</div>
+
+          <div>
+
+            <h3>Analyse mistakes</h3>
+
+            <p>
+              Do not simply check the correct answer and move on.
+              Identify why your answer was wrong and note the concept
+              or step that caused the problem.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="step">
+
+          <div class="step-number">6</div>
+
+          <div>
+
+            <h3>Repeat revision</h3>
+
+            <p>
+              Return to previously studied chapters regularly.
+              Short repeated revision sessions can help you recall
+              information more reliably than studying everything once.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        Subject-wise Preparation
+      </h2>
+
+      <p class="intro">
+        Different subjects require different kinds of practice.
+        Adjust your preparation method instead of using exactly
+        the same approach for every subject.
+      </p>
+
+      <div class="subject-grid">
+
+
+        <article class="subject">
+
+          <h3>Science</h3>
+
+          <p>
+            Focus on understanding concepts and connecting them with
+            diagrams, equations, definitions and applications.
+          </p>
+
+          <ul>
+            <li>Revise important concepts after each chapter.</li>
+            <li>Practise numerical problems where applicable.</li>
+            <li>Review important chemical equations.</li>
+            <li>Practise labelled diagrams.</li>
+            <li>Write answers instead of only reading them.</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject">
+
+          <h3>Mathematics</h3>
+
+          <p>
+            Mathematics improves mainly through problem solving.
+            Regular written practice is more useful than repeatedly
+            reading solved examples.
+          </p>
+
+          <ul>
+            <li>Maintain a formula revision section.</li>
+            <li>Solve examples without immediately seeing solutions.</li>
+            <li>Practise different question types.</li>
+            <li>Record questions you repeatedly get wrong.</li>
+            <li>Redo difficult questions after a gap.</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject">
+
+          <h3>Social Science</h3>
+
+          <p>
+            Organise information into concepts, events, causes,
+            effects, examples and important terms.
+          </p>
+
+          <ul>
+            <li>Create short chapter revision points.</li>
+            <li>Understand relationships between events and ideas.</li>
+            <li>Practise map-based work where applicable.</li>
+            <li>Write answers using clear points and explanations.</li>
+            <li>Revise important terminology regularly.</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject">
+
+          <h3>English</h3>
+
+          <p>
+            English preparation should combine reading, writing,
+            grammar and literature practice.
+          </p>
+
+          <ul>
+            <li>Practise reading comprehension.</li>
+            <li>Review important writing formats.</li>
+            <li>Practise grammar through questions.</li>
+            <li>Prepare literature answers in your own words.</li>
+            <li>Check clarity, grammar and organisation in written answers.</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        The Three-Part Revision Method
+      </h2>
+
+      <div class="revision-box">
+
+        <h3>First: Recall</h3>
+
+        <p>
+          Close your book and try to remember the main ideas,
+          formulas, definitions or events from the chapter.
+          This shows which areas need another look.
+        </p>
+
+        <h3>Second: Check</h3>
+
+        <p>
+          Compare your recall with your notes or textbook. Mark
+          information that you forgot or misunderstood.
+        </p>
+
+        <h3>Third: Practise</h3>
+
+        <p>
+          Solve questions based on the topics you just revised.
+          This turns passive reading into active preparation.
+        </p>
+
+        <h3>Repeat</h3>
+
+        <p>
+          Revisit difficult topics later rather than trying to
+          master everything in a single session.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        Keep a Mistake Record
+      </h2>
+
+      <p class="intro">
+        A mistake record can turn repeated errors into targeted
+        revision tasks. Keep it simple and review it regularly.
+      </p>
+
+      <div class="mistake-grid">
+
+
+        <article class="mistake-card">
+
+          <h3>Concept mistake</h3>
+
+          <p>
+            The underlying idea was not understood correctly.
+            Revisit the relevant concept before attempting the
+            question again.
+          </p>
+
+        </article>
+
+
+        <article class="mistake-card">
+
+          <h3>Method mistake</h3>
+
+          <p>
+            You understood the topic but used an incorrect method
+            or missed an important step while solving the question.
+          </p>
+
+        </article>
+
+
+        <article class="mistake-card">
+
+          <h3>Presentation mistake</h3>
+
+          <p>
+            The idea may be correct, but the written answer was
+            unclear, incomplete or poorly organised. Practise
+            presenting the solution more clearly.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        Final Revision Checklist
+      </h2>
+
+      <div class="checklist">
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I have reviewed the chapters in my current syllabus.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I can explain the important concepts without copying the textbook.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I have solved written practice questions.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I have reviewed my common mistakes.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I have revised important formulas, definitions and key points.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I have practised managing my time while solving questions.</p>
+        </div>
+
+        <div class="checklist-item">
+          <div class="check"></div>
+          <p>I know the official examination instructions provided by my school or board.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>
+        Frequently Asked Questions
+      </h2>
+
+
+      <div class="faq">
+
+        <h3>Should I study every subject every day?</h3>
+
+        <p>
+          Not necessarily. A balanced weekly plan can give different
+          subjects different amounts of time depending on your needs,
+          upcoming tests and areas that require more practice.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>Is reading notes enough for exam preparation?</h3>
+
+        <p>
+          Reading is useful for learning and revision, but written
+          practice is also important. Solving questions helps you
+          check whether you can actually use what you have studied.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>How should I handle a difficult chapter?</h3>
+
+        <p>
+          Break it into smaller concepts. Learn one concept, solve
+          a few related questions, check your mistakes and then move
+          to the next concept. If you remain stuck, ask your teacher
+          or another trusted learning source for clarification.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>When should I start revision?</h3>
+
+        <p>
+          Revision works better when it happens throughout the
+          preparation period rather than being postponed until the
+          final days. Use short revision sessions alongside new
+          learning.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>What should I use as the final authority for my syllabus?</h3>
+
+        <p>
+          Always check the latest official information from your
+          school and examination board. Syllabus, assessment and
+          examination instructions can change.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="cta">
+
+      <h2>
+        Continue Your Preparation
+      </h2>
+
+      <p>
+        Build a timetable with the Study Planner or review
+        subject-wise material using StudentKit's Study Notes.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          href="study-planner.html"
+          class="button"
+        >
+          Open Study Planner
+        </a>
+
+        <a
+          href="study-notes.html"
+          class="button secondary"
+        >
+          Browse Study Notes
+        </a>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      StudentKit India — Free Student Tools & Study Resources
+    </p>
+
+    <p style="margin-top:10px;">
+
+      <a href="privacy.html">Privacy Policy</a>
+
+      <a href="terms.html">Terms</a>
+
+      <a href="disclaimer.html">Disclaimer</a>
+
+      <a href="contact.html">Contact</a>
+
+    </p>
+
+    <p style="margin-top:12px;">
+      © 2026 StudentKit India. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
