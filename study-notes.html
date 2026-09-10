@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 10 Study Notes - Science, Maths, SST & English | StudentKit India</title>
+
+  <meta
+    name="description"
+    content="Free Class 10 study notes, chapter summaries, important concepts, formulas and revision resources for students."
+  >
+
+  <meta
+    name="keywords"
+    content="Class 10 notes, Class 10 Science notes, Class 10 Maths notes, Class 10 SST notes, Class 10 English notes, CBSE notes"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://studentkit-india.vercel.app/study-notes.html"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #15171c;
+      --muted: #626875;
+      --border: #e5e7eb;
+      --primary: #111827;
+      --soft: #f0f2f5;
+      --accent: #2563eb;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #454a54;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 70px 0 45px;
+      background: linear-gradient(180deg, #fff, var(--bg));
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      max-width: 800px;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      padding: 40px 0 70px;
+    }
+
+    .section {
+      margin-bottom: 45px;
+    }
+
+    .section h2 {
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .subject-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .subject-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .subject-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .chapter-list {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .chapter-list li {
+      background: var(--soft);
+      padding: 10px 13px;
+      border-radius: 9px;
+      font-size: 14px;
+    }
+
+    .guide {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .guide h3 {
+      margin: 22px 0 8px;
+      font-size: 21px;
+    }
+
+    .guide h3:first-child {
+      margin-top: 0;
+    }
+
+    .guide p {
+      color: #505662;
+      margin-bottom: 12px;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tip {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .tip h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .tip p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .cta {
+      margin-top: 40px;
+      background: #111827;
+      color: #fff;
+      border-radius: 18px;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #d1d5db;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #fff;
+      color: #111827;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      margin: 0 8px;
+    }
+
+    @media (max-width: 750px) {
+      .nav-links {
+        display: none;
+      }
+
+      .subject-grid,
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 0 35px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 26px;
+      }
+
+      .guide,
+      .subject-card {
+        padding: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      StudentKit India
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="study-notes.html">Study Notes</a>
+      <a href="study-planner.html">Study Planner</a>
+      <a href="exam-preparation.html">Exam Preparation</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+
+    <div class="breadcrumb">
+      Home / Study Notes
+    </div>
+
+    <h1>
+      Class 10 Study Notes
+    </h1>
+
+    <p>
+      Clear and easy-to-revise study material for Class 10 students.
+      Use these resources to understand important concepts, revise
+      chapters and prepare for school and board examinations.
+    </p>
+
+  </div>
+</section>
+
+<main>
+
+  <div class="container">
+
+    <section class="section">
+
+      <h2>Subject-wise Study Resources</h2>
+
+      <p class="section-intro">
+        Choose a subject below to organize your revision. The goal of
+        these resources is to help students understand concepts first
+        and then revise important points efficiently.
+      </p>
+
+      <div class="subject-grid">
+
+        <article class="subject-card">
+
+          <h3>Science</h3>
+
+          <p>
+            Revise important concepts from Physics, Chemistry and
+            Biology with chapter-focused explanations.
+          </p>
+
+          <ul class="chapter-list">
+            <li>Chemical Reactions and Equations</li>
+            <li>Acids, Bases and Salts</li>
+            <li>Life Processes</li>
+            <li>Control and Coordination</li>
+            <li>Light: Reflection and Refraction</li>
+            <li>Human Eye and the Colourful World</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject-card">
+
+          <h3>Mathematics</h3>
+
+          <p>
+            Build a strong foundation by revising formulas,
+            concepts and common problem-solving methods.
+          </p>
+
+          <ul class="chapter-list">
+            <li>Real Numbers</li>
+            <li>Polynomials</li>
+            <li>Pair of Linear Equations</li>
+            <li>Quadratic Equations</li>
+            <li>Arithmetic Progressions</li>
+            <li>Triangles</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject-card">
+
+          <h3>Social Science</h3>
+
+          <p>
+            Organize History, Geography, Political Science and
+            Economics topics for faster revision.
+          </p>
+
+          <ul class="chapter-list">
+            <li>The Rise of Nationalism in Europe</li>
+            <li>Nationalism in India</li>
+            <li>Resources and Development</li>
+            <li>Power Sharing</li>
+            <li>Federalism</li>
+            <li>Development</li>
+          </ul>
+
+        </article>
+
+
+        <article class="subject-card">
+
+          <h3>English</h3>
+
+          <p>
+            Improve comprehension, literature revision and
+            written-answer preparation with structured practice.
+          </p>
+
+          <ul class="chapter-list">
+            <li>Reading Comprehension</li>
+            <li>Writing Skills</li>
+            <li>Grammar Revision</li>
+            <li>Literature Questions</li>
+            <li>Long-answer Practice</li>
+            <li>Vocabulary Development</li>
+          </ul>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>How to Use These Notes Effectively</h2>
+
+      <div class="guide">
+
+        <h3>1. Understand before memorising</h3>
+
+        <p>
+          Read a concept carefully and try to explain it in your own
+          words. Memorising an answer without understanding the idea
+          can make revision difficult later.
+        </p>
+
+
+        <h3>2. Make short revision points</h3>
+
+        <p>
+          After studying a chapter, write down formulas, definitions,
+          important examples and key points. Keep these notes short
+          enough to revise quickly before a test.
+        </p>
+
+
+        <h3>3. Practise questions</h3>
+
+        <p>
+          Reading notes alone is not enough for most subjects.
+          Solve textbook questions, sample questions and numerical
+          problems after completing a topic.
+        </p>
+
+
+        <h3>4. Revise regularly</h3>
+
+        <p>
+          Instead of waiting until the examination period, revise
+          previously studied chapters at regular intervals. Short,
+          repeated revision can make recall easier.
+        </p>
+
+
+        <h3>5. Track difficult topics</h3>
+
+        <p>
+          Maintain a small list of concepts that you frequently get
+          wrong. Revisit those topics and solve additional questions
+          until the underlying method becomes clear.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>Simple Revision Strategy</h2>
+
+      <p class="section-intro">
+        A practical revision session can be divided into three parts.
+        The exact duration can be adjusted according to your timetable.
+      </p>
+
+      <div class="tips">
+
+        <article class="tip">
+          <h3>Learn</h3>
+          <p>
+            Read the concept carefully and identify the main idea,
+            definitions, formulas or examples.
+          </p>
+        </article>
+
+        <article class="tip">
+          <h3>Practise</h3>
+          <p>
+            Solve questions without immediately checking the solution.
+            Mark questions where you need more practice.
+          </p>
+        </article>
+
+        <article class="tip">
+          <h3>Revise</h3>
+          <p>
+            At the end, quickly recall what you studied and review
+            only the points that you could not remember.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="section">
+
+      <h2>Why Chapter-wise Revision Helps</h2>
+
+      <div class="guide">
+
+        <p>
+          A large syllabus can feel difficult when every topic is
+          studied at the same time. Dividing the syllabus into
+          smaller chapters makes it easier to identify what has
+          already been completed and what still needs attention.
+        </p>
+
+        <p>
+          Chapter-wise revision also makes practice more focused.
+          For example, after studying quadratic equations, a student
+          can immediately solve related problems instead of mixing
+          unrelated topics.
+        </p>
+
+        <p>
+          The most useful revision system is one that combines
+          understanding, written practice and repeated recall.
+          Students should also follow the latest syllabus and
+          instructions provided by their school or examination board.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <div class="cta">
+
+      <h2>Continue Your Preparation</h2>
+
+      <p>
+        Use StudentKit's study tools along with your regular
+        textbooks, classroom learning and practice material.
+      </p>
+
+      <a href="index.html#tools" class="button">
+        Explore Student Tools
+      </a>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      StudentKit India — Free Student Tools & Study Resources
+    </p>
+
+    <p style="margin-top:10px;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </p>
+
+    <p style="margin-top:12px;">
+      © 2026 StudentKit India. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
