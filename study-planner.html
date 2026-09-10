@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Study Planner & Timetable | StudentKit India</title>
+
+  <meta
+    name="description"
+    content="Create a realistic daily study timetable with StudentKit India's free Study Planner. Add subjects, set priorities, choose study hours and generate a balanced schedule."
+  >
+
+  <meta name="keywords"
+    content="study planner, study timetable, Class 10 study planner, exam timetable, student planner, study schedule"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://studentkit-india.vercel.app/study-planner.html"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --text: #15171c;
+      --muted: #626875;
+      --border: #e3e6eb;
+      --soft: #f1f3f6;
+      --primary: #111827;
+      --accent: #2563eb;
+      --danger: #dc2626;
+      --success: #15803d;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      background: linear-gradient(180deg, #fff, var(--bg));
+      padding: 55px 0 35px;
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 50px);
+      line-height: 1.15;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 17px;
+    }
+
+    main {
+      padding: 35px 0 70px;
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .card h2 {
+      font-size: 23px;
+      margin-bottom: 7px;
+    }
+
+    .card-description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #d6dae1;
+      border-radius: 9px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+    }
+
+    .subject-header {
+      display: grid;
+      grid-template-columns: 1fr 90px 40px;
+      gap: 8px;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .subject-row {
+      display: grid;
+      grid-template-columns: 1fr 90px 40px;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .remove-subject {
+      border: 0;
+      border-radius: 8px;
+      background: #fee2e2;
+      color: var(--danger);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .add-button,
+    .generate-button,
+    .action-button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 9px;
+      font-weight: 700;
+    }
+
+    .add-button {
+      width: 100%;
+      padding: 11px;
+      background: var(--soft);
+      color: var(--text);
+      margin: 8px 0 20px;
+    }
+
+    .generate-button {
+      width: 100%;
+      padding: 13px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .generate-button:hover {
+      opacity: .9;
+    }
+
+    .results-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    .results-empty h2 {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .summary-box {
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 17px;
+    }
+
+    .summary-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .summary-box strong {
+      font-size: 21px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .action-button {
+      background: var(--soft);
+      padding: 10px 14px;
+      color: var(--text);
+    }
+
+    .day-card {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .day-title {
+      background: var(--soft);
+      padding: 13px 16px;
+      font-weight: 800;
+    }
+
+    .session {
+      display: grid;
+      grid-template-columns: 85px 1fr 75px;
+      gap: 12px;
+      padding: 14px 16px;
+      border-top: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .session-time {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .session-subject {
+      font-weight: 700;
+    }
+
+    .session-type {
+      text-align: right;
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .content-section {
+      margin-top: 45px;
+    }
+
+    .content-section h2 {
+      font-size: 29px;
+      margin-bottom: 12px;
+    }
+
+    .content-section > p {
+      color: var(--muted);
+      max-width: 850px;
+      margin-bottom: 20px;
+    }
+
+    .guide {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .guide h3 {
+      margin: 20px 0 7px;
+      font-size: 20px;
+    }
+
+    .guide h3:first-child {
+      margin-top: 0;
+    }
+
+    .guide p {
+      color: #555b66;
+    }
+
+    .tips {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tip {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 21px;
+    }
+
+    .tip h3 {
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+
+    .tip p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .faq {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+    .faq h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .faq p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer a {
+      margin: 0 8px;
+    }
+
+    @media (max-width: 850px) {
+      .planner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .nav-links {
+        display: none;
+      }
+
+      .summary,
+      .tips {
+        grid-template-columns: 1fr;
+      }
+
+      .subject-header,
+      .subject-row {
+        grid-template-columns: 1fr 80px 38px;
+      }
+
+      .session {
+        grid-template-columns: 70px 1fr;
+      }
+
+      .session-type {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .actions {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media print {
+      header,
+      .hero,
+      .planner-card,
+      .content-section,
+      footer,
+      .actions {
+        display: none !important;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      main {
+        padding: 0;
+      }
+
+      .planner-grid {
+        display: block;
+      }
+
+      .results-card {
+        border: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      StudentKit India
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="study-notes.html">Study Notes</a>
+      <a href="study-planner.html">Study Planner</a>
+      <a href="exam-preparation.html">Exam Preparation</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      Home / Study Planner
+    </div>
+
+    <h1>
+      Study Planner & Timetable
+    </h1>
+
+    <p>
+      Create a realistic study schedule based on your subjects,
+      available study time and the number of days you want to plan.
+      Use the generated timetable as a guide and adjust it when your
+      school, coaching or other responsibilities change.
+    </p>
+
+  </div>
+
+</section>
+
+
+<main>
+
+  <div class="container">
+
+    <div class="planner-grid">
+
+      <section class="card planner-card">
+
+        <h2>Build Your Plan</h2>
+
+        <p class="card-description">
+          Add your subjects and choose how much time you can
+          realistically study each day.
+        </p>
+
+
+        <div class="field">
+
+          <label for="studyHours">
+            Study hours per day
+          </label>
+
+          <input
+            type="number"
+            id="studyHours"
+            min="0.5"
+            max="12"
+            step="0.5"
+            value="3"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="numberDays">
+            Number of days
+          </label>
+
+          <input
+            type="number"
+            id="numberDays"
+            min="1"
+            max="60"
+            value="7"
+          >
+
+        </div>
+
+
+        <label style="display:block;font-weight:700;font-size:14px;margin-bottom:8px;">
+          Subjects and priority
+        </label>
+
+        <div class="subject-header">
+          <span>Subject</span>
+          <span>Priority</span>
+          <span></span>
+        </div>
+
+        <div id="subjects"></div>
+
+        <button
+          type="button"
+          class="add-button"
+          id="addSubject"
+        >
+          + Add Subject
+        </button>
+
+
+        <button
+          type="button"
+          class="generate-button"
+          id="generatePlan"
+        >
+          Generate Study Plan
+        </button>
+
+      </section>
+
+
+      <section class="card results-card">
+
+        <div id="results">
+
+          <div class="results-empty">
+
+            <h2>Your Study Plan</h2>
+
+            <p>
+              Add your subjects and generate a timetable to see
+              your personalized study schedule here.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <section class="content-section">
+
+      <h2>How to Make a Useful Study Plan</h2>
+
+      <p>
+        A timetable works best when it matches the amount of time
+        you can actually give to studying. Instead of filling every
+        available hour, leave enough flexibility for school,
+        coaching, homework, revision and unexpected tasks.
+      </p>
+
+      <div class="guide">
+
+        <h3>1. List every subject</h3>
+
+        <p>
+          Start by writing down all subjects that need attention.
+          This makes it easier to see the complete workload instead
+          of planning only the subjects you enjoy.
+        </p>
+
+        <h3>2. Give priority to difficult topics</h3>
+
+        <p>
+          Subjects or chapters that need more practice can receive
+          a higher priority. This helps prevent difficult topics
+          from being repeatedly postponed.
+        </p>
+
+        <h3>3. Keep study sessions manageable</h3>
+
+        <p>
+          Divide your available study time into focused sessions.
+          A shorter session with a clear task can be easier to
+          complete than an unrealistic marathon session.
+        </p>
+
+        <h3>4. Include revision</h3>
+
+        <p>
+          A plan should not contain only new lessons. Keep some
+          sessions for recalling older topics, solving questions
+          and checking mistakes.
+        </p>
+
+        <h3>5. Review your timetable</h3>
+
+        <p>
+          At the end of a few days, compare your planned work with
+          what you actually completed. If the schedule is regularly
+          too difficult, reduce the workload rather than abandoning
+          the entire plan.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="content-section">
+
+      <h2>Simple Study Planning Tips</h2>
+
+      <div class="tips">
+
+        <article class="tip">
+
+          <h3>Set a clear task</h3>
+
+          <p>
+            Instead of writing only "Maths", define the task,
+            such as revising a chapter or solving a set of questions.
+          </p>
+
+        </article>
+
+
+        <article class="tip">
+
+          <h3>Mix subjects</h3>
+
+          <p>
+            Alternating subjects can make a long study day feel
+            more manageable and gives different topics regular attention.
+          </p>
+
+        </article>
+
+
+        <article class="tip">
+
+          <h3>Leave some flexibility</h3>
+
+          <p>
+            Keep a little unused time so unfinished homework,
+            tests or unexpected commitments do not break the plan.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section class="content-section">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq">
+
+        <h3>How many subjects should I add?</h3>
+
+        <p>
+          Add every subject that needs attention during the selected
+          planning period. You can add more or remove subjects whenever
+          your priorities change.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>Should every subject get the same amount of time?</h3>
+
+        <p>
+          Not necessarily. A difficult or high-priority subject may
+          need more sessions, while a subject you are already confident
+          in may need less frequent revision.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>Can I print the generated timetable?</h3>
+
+        <p>
+          Yes. After generating your plan, use the Print button.
+          Your browser can also save the printable version as a PDF.
+        </p>
+
+      </div>
+
+
+      <div class="faq">
+
+        <h3>Will my subjects be uploaded anywhere?</h3>
+
+        <p>
+          No. This planner generates the timetable directly in your
+          browser. The page does not need an account or a server
+          request to calculate the schedule.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      StudentKit India — Free Student Tools & Study Resources
+    </p>
+
+    <p style="margin-top:10px;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </p>
+
+    <p style="margin-top:12px;">
+      © 2026 StudentKit India. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+  const subjectsContainer = document.getElementById("subjects");
+  const addSubjectButton = document.getElementById("addSubject");
+  const generateButton = document.getElementById("generatePlan");
+  const results = document.getElementById("results");
+
+  let subjectCount = 0;
+
+
+  function addSubject(name = "", priority = "3") {
+
+    subjectCount++;
+
+    const row = document.createElement("div");
+
+    row.className = "subject-row";
+
+    row.innerHTML = `
+      <input
+        type="text"
+        class="subject-name"
+        placeholder="e.g. Mathematics"
+        value="${escapeHTML(name)}"
+      >
+
+      <select class="subject-priority">
+        <option value="1" ${priority === "1" ? "selected" : ""}>1</option>
+        <option value="2" ${priority === "2" ? "selected" : ""}>2</option>
+        <option value="3" ${priority === "3" ? "selected" : ""}>3</option>
+        <option value="4" ${priority === "4" ? "selected" : ""}>4</option>
+        <option value="5" ${priority === "5" ? "selected" : ""}>5</option>
+      </select>
+
+      <button
+        type="button"
+        class="remove-subject"
+        title="Remove subject"
+      >
+        ×
+      </button>
+    `;
+
+    row.querySelector(".remove-subject").addEventListener(
+      "click",
+      () => row.remove()
+    );
+
+    subjectsContainer.appendChild(row);
+  }
+
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+
+  function getSubjects() {
+
+    const rows =
+      document.querySelectorAll(".subject-row");
+
+    const subjects = [];
+
+    rows.forEach(row => {
+
+      const name =
+        row.querySelector(".subject-name").value.trim();
+
+      const priority =
+        Number(
+          row.querySelector(".subject-priority").value
+        );
+
+      if (name) {
+
+        subjects.push({
+          name,
+          priority
+        });
+
+      }
+
+    });
+
+    return subjects;
+  }
+
+
+  function getSessionCount(hours) {
+
+    /*
+      Each session is approximately 45 minutes.
+      The remaining time can be used for breaks,
+      short revision or setup.
+    */
+
+    return Math.max(
+      1,
+      Math.floor(hours * 60 / 45)
+    );
+  }
+
+
+  function generatePlan() {
+
+    const hours =
+      Number(
+        document.getElementById("studyHours").value
+      );
+
+    const days =
+      Number(
+        document.getElementById("numberDays").value
+      );
+
+    const subjects = getSubjects();
+
+
+    if (!hours || hours <= 0) {
+
+      alert("Please enter valid study hours.");
+
+      return;
+    }
+
+
+    if (!days || days <= 0) {
+
+      alert("Please enter a valid number of days.");
+
+      return;
+    }
+
+
+    if (subjects.length === 0) {
+
+      alert("Please add at least one subject.");
+
+      return;
+    }
+
+
+    const sessionsPerDay =
+      getSessionCount(hours);
+
+    const totalSessions =
+      sessionsPerDay * days;
+
+
+    /*
+      Priority creates weighted distribution.
+      Higher priority receives more sessions.
+    */
+
+    const totalPriority =
+      subjects.reduce(
+        (sum, subject) =>
+          sum + subject.priority,
+        0
+      );
+
+
+    const allocation =
+      subjects.map(subject => {
+
+        return {
+          ...subject,
+          sessions: Math.max(
+            1,
+            Math.round(
+              totalSessions *
+              subject.priority /
+              totalPriority
+            )
+          )
+        };
+
+      });
+
+
+    const sessionPool = [];
+
+
+    allocation.forEach(subject => {
+
+      for (
+        let i = 0;
+        i < subject.sessions;
+        i++
+      ) {
+
+        sessionPool.push(subject.name);
+
+      }
+
+    });
+
+
+    /*
+      Shuffle the pool so one subject does not
+      appear in one continuous block.
+    */
+
+    for (
+      let i = sessionPool.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(
+          Math.random() * (i + 1)
+        );
+
+      [
+        sessionPool[i],
+        sessionPool[j]
+      ] =
+      [
+        sessionPool[j],
+        sessionPool[i]
+      ];
+
+    }
+
+
+    let sessionIndex = 0;
+
+    let html = `
+
+      <div class="summary">
+
+        <div class="summary-box">
+          <span>Study hours/day</span>
+          <strong>${hours}</strong>
+        </div>
+
+        <div class="summary-box">
+          <span>Planning days</span>
+          <strong>${days}</strong>
+        </div>
+
+        <div class="summary-box">
+          <span>Sessions/day</span>
+          <strong>${sessionsPerDay}</strong>
+        </div>
+
+      </div>
+
+      <div class="actions">
+
+        <button
+          type="button"
+          class="action-button"
+          id="copyPlan"
+        >
+          Copy Plan
+        </button>
+
+        <button
+          type="button"
+          class="action-button"
+          id="printPlan"
+        >
+          Print
+        </button>
+
+      </div>
+    `;
+
+
+    for (
+      let day = 1;
+      day <= days;
+      day++
+    ) {
+
+      html += `
+        <div class="day-card">
+
+          <div class="day-title">
+            Day ${day}
+          </div>
+      `;
+
+
+      for (
+        let session = 1;
+        session <= sessionsPerDay;
+        session++
+      ) {
+
+        const subject =
+          sessionPool[
+            sessionIndex %
+            sessionPool.length
+          ];
+
+        sessionIndex++;
+
+
+        const type =
+          session === sessionsPerDay
+            ? "Revision"
+            : "Study";
+
+
+        const startMinutes =
+          17 * 60 +
+          (session - 1) * 55;
+
+
+        const startHour =
+          Math.floor(startMinutes / 60);
+
+        const startMinute =
+          startMinutes % 60;
+
+
+        const endMinutes =
+          startMinutes + 45;
+
+        const endHour =
+          Math.floor(endMinutes / 60);
+
+        const endMinute =
+          endMinutes % 60;
+
+
+        const formatTime =
+          (hour, minute) => {
+
+            const suffix =
+              hour >= 12 ? "PM" : "AM";
+
+            let h =
+              hour % 12;
+
+            if (h === 0) h = 12;
+
+            return `${h}:${String(minute).padStart(2, "0")} ${suffix}`;
+          };
+
+
+        html += `
+
+          <div class="session">
+
+            <div class="session-time">
+              ${formatTime(startHour, startMinute)}
+              -
+              ${formatTime(endHour, endMinute)}
+            </div>
+
+            <div class="session-subject">
+              ${escapeHTML(subject)}
+            </div>
+
+            <div class="session-type">
+              ${type}
+            </div>
+
+          </div>
+        `;
+
+      }
+
+
+      html += `</div>`;
+
+    }
+
+
+    results.innerHTML = html;
+
+
+    document
+      .getElementById("copyPlan")
+      .addEventListener(
+        "click",
+        copyPlan
+      );
+
+
+    document
+      .getElementById("printPlan")
+      .addEventListener(
+        "click",
+        () => window.print()
+      );
+
+  }
+
+
+  function copyPlan() {
+
+    const textParts = [];
+
+    document
+      .querySelectorAll(".day-card")
+      .forEach(day => {
+
+        const title =
+          day.querySelector(".day-title")
+            .textContent
+            .trim();
+
+        textParts.push(title);
+
+        day
+          .querySelectorAll(".session")
+          .forEach(session => {
+
+            const time =
+              session
+                .querySelector(".session-time")
+                .textContent
+                .trim();
+
+            const subject =
+              session
+                .querySelector(".session-subject")
+                .textContent
+                .trim();
+
+            const type =
+              session
+                .querySelector(".session-type")
+                .textContent
+                .trim();
+
+            textParts.push(
+              `${time} — ${subject} — ${type}`
+            );
+
+          });
+
+        textParts.push("");
+
+      });
+
+
+    navigator.clipboard
+      .writeText(
+        textParts.join("\n")
+      )
+      .then(() => {
+
+        const button =
+          document.getElementById("copyPlan");
+
+        button.textContent =
+          "Copied";
+
+        setTimeout(() => {
+
+          button.textContent =
+            "Copy Plan";
+
+        }, 1500);
+
+      })
+      .catch(() => {
+
+        alert(
+          "Copy was not available. Please select and copy the timetable manually."
+        );
+
+      });
+
+  }
+
+
+  addSubject("Mathematics", "5");
+  addSubject("Science", "4");
+  addSubject("Social Science", "3");
+  addSubject("English", "2");
+
+
+  addSubjectButton.addEventListener(
+    "click",
+    () => addSubject()
+  );
+
+
+  generateButton.addEventListener(
+    "click",
+    generatePlan
+  );
+</script>
+
+</body>
+</html>
